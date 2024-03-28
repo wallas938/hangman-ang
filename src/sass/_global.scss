@@ -1,0 +1,44 @@
+@forward "sass/breakpoints";
+@font-face {
+  font-family: 'MouseMemoirs';
+  src: url('/assets/fonts/MouseMemoirs-Regular.ttf');
+}
+
+body,
+html,
+#app {
+  height: 100%;
+}
+
+html {
+  font-family: MouseMemoirs, serif;
+  font-size: 16px;
+  position: relative;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+.container {
+  // 576px
+  max-width: 38.4rem;
+  margin: 0 auto;
+}
+
+/* @media screen and (min-width: $tablet-min) {
+
+  .container {
+    // 1090px
+    max-width: 66.133333rem;
+  }
+}
+
+@media screen and (min-width: $desktop-min) {
+
+  .container {
+    // 1280px;
+    max-width: 85.333333rem;
+  }
+} */
