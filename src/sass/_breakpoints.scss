@@ -1,0 +1,10 @@
+@use "sass/helpers/functions"as f;
+
+/* Breakpoints */
+
+$breakpoints-up: ("medium": f.toRem(768, 16),
+  "large": f.toRem(1440, 16),
+);
+$breakpoints-down: ("small": f.toRem(767, 16),
+  "medium": f.toRem(1439, 16),
+);
