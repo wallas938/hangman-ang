@@ -5,104 +5,106 @@
 @import "sass/layout/index";
 @import "sass/typography";
 
-.menu {
+main {
   height: 100%;
-  padding: toRem(206, 16) toRem(25, 16) toRem(124, 16) toRem(26, 16);
-  display: flex;
-  justify-content: center;
-  @include breakpoint-up(medium) {
-    align-items: center;
-    padding: toRem(317, 16) 0 toRem(204, 16) 0 ;
-  }
-  @include breakpoint-up(large) {
-    padding: toRem(313, 16) 0 toRem(208, 16) 0 ;
-  }
-
-
-  .menu__square {
-    position: relative;
-    width: toRem(324, 16);
-    height: toRem(481, 16);
-    border-radius: 48px;
-    background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
-    box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px #2463FF inset;
+  .menu {
+    height: 100%;
+    padding: toRem(206, 16) toRem(25, 16) toRem(124, 16) toRem(26, 16);
+    display: flex;
+    justify-content: center;
     @include breakpoint-up(medium) {
-      width: toRem(592, 16);
-      height: toRem(500, 16);
-    }
-    ::after {
-      content: "";
-      position: absolute;
-      top: toRem(-55, 16);
-      left: 50%;
-      transform: translate(-50%);
-      background-size: contain;
-      width: toRem(264, 16);
-      height: toRem(131, 16);
-      background-repeat: no-repeat;
-      background-image: url("/assets/images/logo.svg");
-      @include breakpoint-up(medium) {
-        width: toRem(372, 16);
-        height: toRem(186, 16);
-        top: toRem(-109, 16);
-      }
-    }
-
-    .square__cta {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       align-items: center;
-      padding: toRem(138, 16) toRem(31, 16) toRem(64, 16) toRem(33, 16);
+      padding: toRem(317, 16) 0 toRem(204, 16) 0 ;
+    }
+    @include breakpoint-up(large) {
+      padding: toRem(313, 16) 0 toRem(208, 16) 0 ;
+    }
+    .menu__square {
+      position: relative;
+      width: toRem(324, 16);
+      height: toRem(481, 16);
+      border-radius: 48px;
+      background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
+      box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px #2463FF inset;
       @include breakpoint-up(medium) {
-        padding: toRem(129, 16) 0 toRem(21, 16) 0;
+        width: toRem(592, 16);
+        height: toRem(500, 16);
       }
-      .cta__play {
-        margin-bottom: toRem(57, 16);
-        border-radius: 100%;
-        border: none;
-        width: toRem(160, 16);
-        height: toRem(160, 16);
-        background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
-        box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+      ::after {
+        content: "";
+        position: absolute;
+        top: toRem(-55, 16);
+        left: 50%;
+        transform: translate(-50%);
+        background-size: contain;
+        width: toRem(264, 16);
+        height: toRem(131, 16);
+        background-repeat: no-repeat;
+        background-image: url("/assets/images/logo.svg");
         @include breakpoint-up(medium) {
-          margin-bottom: toRem(58, 16);
-          width: toRem(200, 16);
-          height: toRem(200, 16);
+          width: toRem(372, 16);
+          height: toRem(186, 16);
+          top: toRem(-109, 16);
         }
       }
 
-      .cta__play>img {
-        width: toRem(53, 16);
-        height: toRem(50, 16);
-      }
-
-      .cta__play:hover {
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
-        box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
-      }
-
-
-      .cta__how-to-play {
-        @include HeadingS;
-        transition: background 0.3s ease-in-out;
-        color: $White;
-        width: 100%;
-        border: none;
-        padding: toRem(12, 16) toRem(64, 16);
-        border-radius: toRem(40, 16);
-        background: var(--Blue, #2463FF);
-        box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+      .square__cta {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: toRem(138, 16) toRem(31, 16) toRem(64, 16) toRem(33, 16);
         @include breakpoint-up(medium) {
-          width: toRem(260, 16);
-          height: toRem(62, 16);
+          padding: toRem(129, 16) 0 toRem(21, 16) 0;
         }
-      }
+        .cta__play {
+          margin-bottom: toRem(57, 16);
+          border-radius: 100%;
+          border: none;
+          width: toRem(160, 16);
+          height: toRem(160, 16);
+          background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+          box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+          @include breakpoint-up(medium) {
+            margin-bottom: toRem(58, 16);
+            width: toRem(200, 16);
+            height: toRem(200, 16);
+          }
+        }
 
-      .cta__how-to-play:hover {
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
-        box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+        .cta__play>img {
+          width: toRem(53, 16);
+          height: toRem(50, 16);
+        }
+
+        .cta__play:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+          box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+        }
+
+
+        .cta__how-to-play {
+          @include HeadingS;
+          transition: background 0.3s ease-in-out;
+          color: $White;
+          width: 100%;
+          border: none;
+          padding: toRem(12, 16) toRem(64, 16);
+          border-radius: toRem(40, 16);
+          background: var(--Blue, #2463FF);
+          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+          @include breakpoint-up(medium) {
+            width: toRem(260, 16);
+            height: toRem(62, 16);
+          }
+        }
+
+        .cta__how-to-play:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
+          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+        }
       }
     }
   }
 }
+
