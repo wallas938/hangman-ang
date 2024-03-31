@@ -2,8 +2,8 @@
 @use "sass/mixins"as m;
 
 @mixin sharedTypoProps {
-  font-weight: bold;
   font-style: normal;
+  font-weight: 400;
 }
 
 @mixin HeadingXL {
@@ -28,6 +28,7 @@
 @mixin HeadingS {
   font-size: f.toRem(32, 18);
   line-height: f.toRem(38.4, 18);
+  letter-spacing: 1.6px;
   @include sharedTypoProps;
 }
 

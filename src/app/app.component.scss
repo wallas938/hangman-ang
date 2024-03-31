@@ -1,0 +1,29 @@
+@import "sass/breakpoints";
+@import "sass/mixins";
+@import "sass/colors";
+@import "sass/helpers/functions";
+@import "sass/layout/index";
+
+.root {
+  position: relative;
+  height: 100%;
+  .bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url("/assets/images/background-mobile.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include breakpoint-up(medium) {
+      background-image: url("/assets/images/background-tablet.svg");
+    }
+    @include breakpoint-up(large) {
+      background-image: url("/assets/images/background-desktop.svg");
+    }
+  }
+
+}
