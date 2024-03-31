@@ -13,8 +13,11 @@
   @include breakpoint-up(medium) {
     align-items: center;
     padding: toRem(317, 16) 0 toRem(204, 16) 0 ;
-
   }
+  @include breakpoint-up(large) {
+    padding: toRem(313, 16) 0 toRem(208, 16) 0 ;
+  }
+
 
   .menu__square {
     position: relative;
