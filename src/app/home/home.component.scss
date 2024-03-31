@@ -10,6 +10,15 @@
   padding: toRem(206, 16) toRem(25, 16) toRem(124, 16) toRem(26, 16);
   display: flex;
   justify-content: center;
+  @include breakpoint-up(medium) {
+    align-items: center;
+    padding: toRem(317, 16) 0 toRem(204, 16) 0 ;
+  }
+  @include breakpoint-up(large) {
+    padding: toRem(313, 16) 0 toRem(208, 16) 0 ;
+  }
+
+
   .menu__square {
     position: relative;
     width: toRem(324, 16);
@@ -17,6 +26,10 @@
     border-radius: 48px;
     background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
     box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px #2463FF inset;
+    @include breakpoint-up(medium) {
+      width: toRem(592, 16);
+      height: toRem(500, 16);
+    }
     ::after {
       content: "";
       position: absolute;
@@ -28,6 +41,11 @@
       height: toRem(131, 16);
       background-repeat: no-repeat;
       background-image: url("/assets/images/logo.svg");
+      @include breakpoint-up(medium) {
+        width: toRem(372, 16);
+        height: toRem(186, 16);
+        top: toRem(-109, 16);
+      }
     }
 
     .square__cta {
@@ -36,6 +54,9 @@
       justify-content: space-between;
       align-items: center;
       padding: toRem(138, 16) toRem(31, 16) toRem(64, 16) toRem(33, 16);
+      @include breakpoint-up(medium) {
+        padding: toRem(129, 16) 0 toRem(21, 16) 0;
+      }
       .cta__play {
         margin-bottom: toRem(57, 16);
         border-radius: 100%;
@@ -44,6 +65,11 @@
         height: toRem(160, 16);
         background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
         box-shadow: 0px -4px 0px 5px #243041 inset, 0px -12px 0px 11px #9D2DF5 inset;
+        @include breakpoint-up(medium) {
+          margin-bottom: toRem(58, 16);
+          width: toRem(200, 16);
+          height: toRem(200, 16);
+        }
       }
 
       .cta__play>img {
@@ -67,6 +93,10 @@
         border-radius: toRem(40, 16);
         background: var(--Blue, #2463FF);
         box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+        @include breakpoint-up(medium) {
+          width: toRem(260, 16);
+          height: toRem(62, 16);
+        }
       }
 
       .cta__how-to-play:hover {
