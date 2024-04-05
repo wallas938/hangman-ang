@@ -1,0 +1,50 @@
+@import "sass/breakpoints";
+@import "sass/mixins";
+@import "sass/colors";
+@import "sass/helpers/functions";
+@import "sass/layout/index";
+@import "sass/typography";
+
+.card {
+  padding: toRem(32, 16);
+  background-color: $White;
+  border-radius: toRem(20, 16);
+  margin-bottom: toRem(24, 16);
+  .container {
+    display: grid;
+    grid-template-areas:
+      "rule_number rule"
+      "description description";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    row-gap: toRem(16, 16);
+
+    .rule_number {
+      grid-area: rule_number;
+      color: $Blue;
+      font-size: toRem(24, 16);
+      line-height: 120%;
+      letter-spacing: 1.2px;
+      margin-right: toRem(16, 16);
+    }
+
+    .rule {
+      grid-area: rule;
+      color: $DarkNavy;
+      font-size: toRem(24, 16);
+      line-height: 120%;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      @include sharedTypoProps;
+    }
+
+    .description {
+      grid-area: description;
+      color: #887DC0;
+      font-size: toRem(16, 16);
+      line-height: 120%;
+      letter-spacing: .8px;
+      @include sharedTypoProps;
+    }
+  }
+}

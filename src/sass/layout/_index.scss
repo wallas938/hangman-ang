@@ -1,1 +1,5 @@
 @import "sass/colors";
+
+$gradient-bg: linear-gradient(180deg, hsla(264, 87%, 12%, 0.75) 0%, hsla(242, 74%, 27%, 0.75) 70.31%, hsla(253, 69%, 28%, 0.75) 100%);
+$gradient_pink-btn: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+$gradient_pink-btn-hover: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);

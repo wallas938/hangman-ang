@@ -25,5 +25,17 @@
       background-image: url("/assets/images/background-desktop.svg");
     }
   }
+  .bg__gradient {
+    background-image: $gradient-bg,
+    url("/assets/images/background-mobile.svg");
+    @include breakpoint-up(medium) {
 
+      background-image: $gradient-bg,
+      url("/assets/images/background-tablet.svg");
+    }
+    @include breakpoint-up(large) {
+      background-image: $gradient-bg,
+      url("/assets/images/background-desktop.svg");
+    }
+  }
 }

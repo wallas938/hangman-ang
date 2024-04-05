@@ -1,0 +1,23 @@
+@import "sass/breakpoints";
+@import "sass/mixins";
+@import "sass/colors";
+@import "sass/helpers/functions" ;
+@import "sass/layout/index";
+@import "sass/typography";
+
+.root {
+  height: 100%;
+  padding: toRem(32, 16) toRem(26, 16) toRem(59, 16) toRem(25, 16);
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .top {
+
+    }
+
+    .rules {
+      padding-top: toRem(79, 16);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="root">
+  <div class="container">
+    <div class="top">
+      <app-header></app-header>
+    </div>
+    <div class="rules">
+      @for (card of cardContent; track card.rule) {
+        <app-card [description]="card.description"
+                  [rule_number]="card.number"
+                  [rule]="card.rule"></app-card>
+      }
+    </div>
+  </div>
+</div>
