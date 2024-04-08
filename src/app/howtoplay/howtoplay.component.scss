@@ -8,12 +8,21 @@
 .root {
   height: 100%;
   padding: toRem(32, 16) toRem(26, 16) toRem(59, 16) toRem(25, 16);
+  @include breakpoint-up(medium) {
+    padding: toRem(61, 16) toRem(48, 16) toRem(98, 16) toRem(40, 16);
+  }
   .container {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: toRem(592, 16);
+    margin: 0 auto;
+    @include breakpoint-up(medium) {
+      padding: toRem(61, 16) 0 toRem(98, 16) 0;
+      max-width: toRem(991, 16);
+    }
     .top {
-
     }
 
     .rules {
