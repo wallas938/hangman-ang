@@ -10,6 +10,12 @@
   background-color: $White;
   border-radius: toRem(20, 16);
   margin-bottom: toRem(24, 16);
+  width: 100%;
+  @include breakpoint-up(medium) {
+    padding: toRem(32, 16) toRem(40, 16);
+    border-radius: toRem(40, 16);
+    margin-bottom: toRem(32, 16);
+  }
   .container {
     display: grid;
     grid-template-areas:
@@ -18,6 +24,15 @@
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     row-gap: toRem(16, 16);
+    @include breakpoint-up(medium) {
+      grid-template-areas:
+      "rule_number rule"
+      "rule_number description";
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      row-gap: toRem(0, 16);
+      column-gap: toRem(40, 16);
+    }
 
     .rule_number {
       grid-area: rule_number;
@@ -26,6 +41,11 @@
       line-height: 120%;
       letter-spacing: 1.2px;
       margin-right: toRem(16, 16);
+      @include breakpoint-up(medium) {
+        @include HeadingL;
+        margin-right: toRem(0, 16);
+        align-self: center;
+      }
     }
 
     .rule {
@@ -36,6 +56,12 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
       @include sharedTypoProps;
+      @include breakpoint-up(medium) {
+        font-size: toRem(40, 16);
+        line-height: 120%;
+        letter-spacing: 2px;
+        margin-bottom: toRem(16, 16);
+      }
     }
 
     .description {
@@ -45,6 +71,11 @@
       line-height: 120%;
       letter-spacing: .8px;
       @include sharedTypoProps;
+      @include breakpoint-up(medium) {
+        font-size: toRem(20, 16);
+        line-height: 120%;
+        letter-spacing: 1px;
+      }
     }
   }
 }

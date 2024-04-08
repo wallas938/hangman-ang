@@ -29,7 +29,6 @@
     background-image: $gradient-bg,
     url("/assets/images/background-mobile.svg");
     @include breakpoint-up(medium) {
-
       background-image: $gradient-bg,
       url("/assets/images/background-tablet.svg");
     }

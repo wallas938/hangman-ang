@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {CardComponent} from "./card/card.component";
-import {HeaderComponent} from "./header/header.component";
+import {HeaderComponent, TitleImageSources} from "../layout/header/header.component";
 
 interface CardContent {
   number: string;
@@ -38,4 +38,9 @@ export class HowtoplayComponent {
       description: "You win by guessing all the letters in the word before your health runs out. If the health bar empties before you guess the word, you lose."
     },
   ]
+  titleImages: TitleImageSources = {
+    desktop_title_src: "assets/images/howtoplay_d.PNG",
+    mobile_title_src: "assets/images/howtoplay.PNG",
+    tablet_title_src: "assets/images/howtoplay_t.PNG"
+  }
 }
