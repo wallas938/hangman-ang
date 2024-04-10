@@ -11,6 +11,9 @@
   @include breakpoint-up(medium) {
     padding: toRem(61, 16) toRem(48, 16) toRem(98, 16) toRem(40, 16);
   }
+  @include breakpoint-up(large) {
+    padding: toRem(61, 16) 0 toRem(98, 16) 0;
+  }
   .container {
     height: 100%;
     display: flex;
@@ -22,11 +25,19 @@
       padding: toRem(61, 16) 0 toRem(98, 16) 0;
       max-width: toRem(991, 16);
     }
-    .top {
+    @include breakpoint-up(large) {
+      padding: 0 toRem(112, 16);
+      max-width: toRem(1671, 16);
     }
-
     .rules {
       padding-top: toRem(79, 16);
+      @include breakpoint-up(large) {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        column-gap: toRem(32, 16);
+      }
     }
   }
 }

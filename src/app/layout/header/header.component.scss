@@ -13,6 +13,7 @@
     @include breakpoint-up(medium) {
       justify-content: flex-start;
     }
+
     .back {
       width: toRem(40, 16);
       height: toRem(40, 16);
@@ -27,6 +28,12 @@
         background: var(--Pink-Gradient, linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%));
         box-shadow: 0px -6px 0px 7px rgba(157, 45, 245, 0.25) inset;
       }
+
+      @include breakpoint-up(large) {
+        width: toRem(94, 16);
+        height: toRem(94, 16);
+        margin-right: toRem(287, 16);
+      }
     }
 
     .back:hover {
@@ -37,6 +44,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      img {
+        width: toRem(185, 16);
+        height: toRem(58, 16);
+
+        @include breakpoint-up(medium) {
+          width: toRem(343, 16);
+          height: toRem(125, 16);
+        }
+
+        @include breakpoint-up(large) {
+          width: toRem(448, 16);
+          height: toRem(163, 16);
+        }
+      }
     }
   }
 }

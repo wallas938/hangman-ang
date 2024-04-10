@@ -19,5 +19,5 @@ export interface TitleImageSources {
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  @Input({required: false}) data: TitleImageSources | null = null
+  @Input({required: true}) data: TitleImageSources | null = null
 }
