@@ -38,9 +38,9 @@ export class HowtoplayComponent {
       description: "You win by guessing all the letters in the word before your health runs out. If the health bar empties before you guess the word, you lose."
     },
   ]
-  titleImages: TitleImageSources = {
-    desktop_title_src: "assets/images/howtoplay_d.PNG",
-    mobile_title_src: "assets/images/howtoplay.PNG",
-    tablet_title_src: "assets/images/howtoplay_t.PNG"
+  howToPlayTitle: TitleImageSources = {
+    mobile_title_src: "assets/images/howtoplay_m.png",
+    tablet_title_src: "assets/images/howtoplay_t.png",
+    desktop_title_src: "assets/images/howtoplay_d.png"
   }
 }

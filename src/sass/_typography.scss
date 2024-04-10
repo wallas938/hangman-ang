@@ -20,20 +20,22 @@
 
 @mixin HeadingM {
   font-size: f.toRem(48, 16);
-  line-height: f.toRem(57.6, 18);
+  line-height: f.toRem(57.6, 16);
+  letter-spacing: 2.4px;
   @include sharedTypoProps;
 
 }
 
 @mixin HeadingS {
-  font-size: f.toRem(32, 18);
-  line-height: f.toRem(38.4, 18);
+  font-size: f.toRem(32, 16);
+  line-height: f.toRem(38.4, 16);
   letter-spacing: 1.6px;
   @include sharedTypoProps;
 }
 
 @mixin Body {
   font-size: f.toRem(26, 16);
-  line-height: f.toRem(31.2, 18);
+  line-height: f.toRem(31.2, 16);
+  letter-spacing: 1.3px;
   @include sharedTypoProps;
 }
