@@ -45,20 +45,20 @@
       justify-content: space-between;
       align-items: center;
 
-      img {
-        width: toRem(185, 16);
-        height: toRem(58, 16);
-
-        @include breakpoint-up(medium) {
-          width: toRem(343, 16);
-          height: toRem(125, 16);
-        }
-
-        @include breakpoint-up(large) {
-          width: toRem(448, 16);
-          height: toRem(163, 16);
-        }
-      }
+      //img {
+      //  width: toRem(185, 16);
+      //  height: toRem(58, 16);
+      //
+      //  @include breakpoint-up(medium) {
+      //    width: toRem(343, 16);
+      //    height: toRem(125, 16);
+      //  }
+      //
+      //  @include breakpoint-up(large) {
+      //    width: toRem(448, 16);
+      //    height: toRem(163, 16);
+      //  }
+      //}
     }
   }
 }

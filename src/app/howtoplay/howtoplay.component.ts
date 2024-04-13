@@ -39,8 +39,26 @@ export class HowtoplayComponent {
     },
   ]
   howToPlayTitle: TitleImageSources = {
-    mobile_title_src: "assets/images/howtoplay_m.png",
-    tablet_title_src: "assets/images/howtoplay_t.png",
-    desktop_title_src: "assets/images/howtoplay_d.png"
+    mobile_title: {
+      src: "assets/images/howtoplay_m.png",
+      sizes: {
+        width: "185px",
+        height: "58px"
+      }
+    },
+    tablet_title: {
+      src: "assets/images/howtoplay_t.png",
+      sizes: {
+        width: "343px",
+        height: "125px"
+      }
+    },
+    desktop_title: {
+      src: "assets/images/howtoplay_d.png",
+      sizes: {
+        width: "448px",
+        height: "163px"
+      }
+    },
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -8,7 +8,10 @@ import {Component, Input} from '@angular/core';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
-  @Input({required: true}) rule_number: string = '';
-  @Input({required: true}) rule: string = "";
-  @Input({required: true}) description: string = "";
+  @Input({required: true}) rule_number!: string;
+  @Input({required: true}) rule!: string;
+  @Input({required: true}) description!: string;
+
+  constructor() {
+  }
 }

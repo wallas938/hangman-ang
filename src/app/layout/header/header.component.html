@@ -18,15 +18,17 @@
     <p class="title">
       <picture>
         <!-- Source pour les appareils avec une largeur d'écran inférieure à 375 pixels -->
-        <source media="(max-width: 767px)" [srcset]="data?.mobile_title_src">
+        <source media="(max-width: 767px)"
+                [srcset]="value.mobile_title.src"
+                [appTitleSizes]="value.mobile_title.sizes">
 
         <!-- Source pour les appareils avec une largeur d'écran supérieure ou égale à 600 pixels -->
-        <source media="(max-width: 1439px)" [srcset]="data?.tablet_title_src">
+        <source media="(max-width: 1439px)" [srcset]="value.tablet_title.src" [appTitleSizes]="value.tablet_title.sizes">
 
         <!-- Source pour les appareils avec une largeur d'écran supérieure ou égale à 600 pixels -->
-        <source media="(min-width: 1440px)" [srcset]="data?.desktop_title_src">
+        <source media="(min-width: 1440px)" [srcset]="value.desktop_title.src" [appTitleSizes]="value.desktop_title.sizes">
         <!-- Balise img pour les appareils ne prenant pas en charge la balise picture ou les requêtes media -->
-        <img [src]="data?.mobile_title_src" alt="Description de l'image">
+        <img [src]="value.mobile_title.src" alt="Description de l'image">
       </picture>
 <!--      <img ngSrc="assets/images/howtoplay_m.png" alt="page title" height="58" width="185">-->
     </p>
