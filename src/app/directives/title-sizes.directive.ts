@@ -1,19 +1,22 @@
-import {Directive, ElementRef, Input} from '@angular/core';
+import { AfterContentInit, AfterViewInit, Directive, ElementRef, HostBinding, Input, OnInit, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appTitleSizes]',
-  standalone: true
+  standalone: true,
 })
-export class TitleSizesDirective {
+export class TitleSizesDirective implements OnInit {
   @Input()
-  sizes: { width: string, height: string } = {
+  dimensions: { width: string, height: string } = {
     width: '',
     height: ''
   }
-  @Input() appTitleSizes!: { width: string; height: string };
-  constructor(private el: ElementRef) {
-    this.el.nativeElement.style.width = this.sizes.width;
-    this.el.nativeElement.style.height = this.sizes.height;
+
+  constructor(private renderer: Renderer2, private el: ElementRef) {
+  }
+  ngOnInit(): void {
+    this.renderer.setStyle(this.el.nativeElement, "width", this.dimensions.width);
+    this.renderer.setStyle(this.el.nativeElement, "height", this.dimensions.height);
+    console.log(this.dimensions)
   }
 
 }

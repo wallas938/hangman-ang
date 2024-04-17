@@ -32,17 +32,16 @@ export interface TitleImageSources {
   standalone: true,
   imports: [
     RouterLink,
-    NgOptimizedImage,
     TitleSizesDirective,
   ],
+  inputs: ["appTitleSizes"],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent {
   @Input()
   value!: TitleImageSources;
 
-  ngAfterViewInit(): void {
-    console.log(this.value)
+  constructor() {
   }
 }

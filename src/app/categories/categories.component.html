@@ -3,10 +3,12 @@
     <div class="top">
       <app-header [value]="categoryTitles"></app-header>
     </div>
-    <div class="rules">
+    <ul class="categories">
       @for (name of categoryNames; track name) {
-        <button [routerLink]="['/game', {cat: name}]">{{name}}</button>
+        <li class="categories__category">
+          <button [routerLink]="['/game', {cat: name}]">{{ name }}</button>
+        </li>
       }
-    </div>
+    </ul>
   </div>
 </div>

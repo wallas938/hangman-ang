@@ -27,22 +27,22 @@ export class CategoriesComponent {
     mobile_title: {
       src: "assets/images/category-title_m.png",
       sizes: {
-        width: "245px",
-        height: "58px"
+        width: "245",
+        height: "58"
       }
     },
     tablet_title: {
       src: "assets/images/category-title_t.png",
       sizes: {
-        width: "451px",
-        height: "125px"
+        width: "451",
+        height: "125"
       }
     },
     desktop_title: {
       src: "assets/images/category-title_d.png",
       sizes: {
-        width: "590px",
-        height: "163px"
+        width: "590",
+        height: "163"
       }
     },
   }
