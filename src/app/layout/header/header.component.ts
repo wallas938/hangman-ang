@@ -1,11 +1,30 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {NgOptimizedImage} from "@angular/common";
+import {TitleSizesDirective} from "../../directives/title-sizes.directive";
 
 export interface TitleImageSources {
-  mobile_title_src: string;
-  tablet_title_src: string;
-  desktop_title_src: string;
+  mobile_title: {
+    src: string;
+    sizes: {
+      width: string;
+      height: string;
+    }
+  };
+  tablet_title: {
+    src: string;
+    sizes: {
+      width: string;
+      height: string;
+    }
+  };
+  desktop_title: {
+    src: string;
+    sizes: {
+      width: string;
+      height: string;
+    }
+  };
 }
 
 @Component({
@@ -13,11 +32,16 @@ export interface TitleImageSources {
   standalone: true,
   imports: [
     RouterLink,
-    NgOptimizedImage
+    TitleSizesDirective,
   ],
+  inputs: ["appTitleSizes"],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  @Input({required: true}) data: TitleImageSources | null = null
+  @Input()
+  value!: TitleImageSources;
+
+  constructor() {
+  }
 }

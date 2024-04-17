@@ -6,8 +6,8 @@ import {HeaderComponent, TitleImageSources} from "../layout/header/header.compon
 interface CardContent {
   number: string;
   rule: string;
-  description: string
-}
+  description: string;
+};
 
 @Component({
   selector: 'app-howtoplay',
@@ -39,8 +39,26 @@ export class HowtoplayComponent {
     },
   ]
   howToPlayTitle: TitleImageSources = {
-    mobile_title_src: "assets/images/howtoplay_m.png",
-    tablet_title_src: "assets/images/howtoplay_t.png",
-    desktop_title_src: "assets/images/howtoplay_d.png"
+    mobile_title: {
+      src: "assets/images/howtoplay_m.png",
+      sizes: {
+        width: "185",
+        height: "58"
+      }
+    },
+    tablet_title: {
+      src: "assets/images/howtoplay_t.png",
+      sizes: {
+        width: "343",
+        height: "125"
+      }
+    },
+    desktop_title: {
+      src: "assets/images/howtoplay_d.png",
+      sizes: {
+        width: "448",
+        height: "163"
+      }
+    },
   }
 }

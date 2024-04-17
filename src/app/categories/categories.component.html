@@ -1,0 +1,14 @@
+<div class="root">
+  <div class="container">
+    <div class="top">
+      <app-header [value]="categoryTitles"></app-header>
+    </div>
+    <ul class="categories">
+      @for (name of categoryNames; track name) {
+        <li class="categories__category">
+          <button [routerLink]="['/game', {cat: name}]">{{ name }}</button>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

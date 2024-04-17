@@ -12,23 +12,22 @@
         <source media="(min-width: 1440px)" srcset="assets/images/icon-back.svg" height="38" width="41">
 
         <!-- Balise img pour les appareils ne prenant pas en charge la balise picture ou les requêtes media -->
-        <img src="fallback_image.jpg" alt="Description de l'image">
+        <img src="assets/images/icon-back.svg" alt="Description de l'image">
       </picture>
     </button>
-    <p class="title">
       <picture>
-        <!-- Source pour les appareils avec une largeur d'écran inférieure à 375 pixels -->
-        <source media="(max-width: 767px)" [srcset]="data?.mobile_title_src">
+        <source media="(max-width: 767px)" [srcset]="value.mobile_title.src" [width]="value.mobile_title.sizes.width"
+                [height]="value.mobile_title.sizes.height">
 
-        <!-- Source pour les appareils avec une largeur d'écran supérieure ou égale à 600 pixels -->
-        <source media="(max-width: 1439px)" [srcset]="data?.tablet_title_src">
+        <source media="(max-width: 1439px)"
+                [srcset]="value.tablet_title.src"
+                [width]="value.tablet_title.sizes.width"
+                [height]="value.tablet_title.sizes.height">
 
-        <!-- Source pour les appareils avec une largeur d'écran supérieure ou égale à 600 pixels -->
-        <source media="(min-width: 1440px)" [srcset]="data?.desktop_title_src">
-        <!-- Balise img pour les appareils ne prenant pas en charge la balise picture ou les requêtes media -->
-        <img [src]="data?.mobile_title_src" alt="Description de l'image">
+        <source media="(min-width: 1440px)" [srcset]="value.desktop_title.src" [width]="value.desktop_title.sizes.width"
+                [height]="value.desktop_title.sizes.height">
+        <img [src]="value.mobile_title.src" alt="page title" [width]="value.mobile_title.sizes.width"
+             [height]="value.mobile_title.sizes.height">
       </picture>
-<!--      <img ngSrc="assets/images/howtoplay_m.png" alt="page title" height="58" width="185">-->
-    </p>
   </div>
 </div>
