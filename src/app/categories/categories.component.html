@@ -5,10 +5,10 @@
     </div>
     <ul class="categories">
       @for (name of categoryNames; track name) {
-        <li class="categories__category">
+        <li class="categories__category" [ngClass]="name.toLowerCase()+'__category'">
           <button [routerLink]="['/game', {cat: name}]">{{ name }}</button>
         </li>
-      }
+        }
     </ul>
   </div>
 </div>

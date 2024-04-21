@@ -5,24 +5,33 @@
 @import "sass/layout/index";
 @import "sass/typography";
 
-
 .root {
   padding: toRem(32, 16) toRem(26, 16) 0 toRem(25, 16);
-
+  @include breakpoint-up(medium) {
+    padding: toRem(61, 16) toRem(48, 16) 0 toRem(40, 16);
+  }
   .container {
-    max-width: toRem(576, 16);
-    margin: 0 auto;
     .categories {
       padding-top: toRem(100, 16);
       display: flex;
       flex-direction: column;
       row-gap: toRem(16, 16);
       align-items: center;
-
+      @include breakpoint-up(medium) {
+        padding-top: toRem(114, 16);
+        flex-direction: row;
+        gap: toRem(32, 16);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
       &__category {
         width: 100%;
+        @include breakpoint-up(medium) {
+          flex-grow: 1;
+          flex-basis: toRem(324, 16);
+          height: toRem(182.66667, 16);
+        }
       }
-
       &__category > button {
         width: 100%;
         min-width: toRem(324, 16);
@@ -33,6 +42,12 @@
         box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
         color: $White;
         font-size: toRem(24, 16);
+        @include breakpoint-up(medium) {
+          @include HeadingM;
+          flex-grow: 1;
+          height: 100%;
+          border-radius: toRem(40, 16);
+        }
       }
     }
   }
