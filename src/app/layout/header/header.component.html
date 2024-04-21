@@ -1,7 +1,7 @@
 <div class="header">
   <div class="container">
     <button routerLink="../" class="back">
-      <picture>
+      <picture class="back-btn">
         <!-- Source pour les appareils avec une largeur d'écran inférieure à 600 pixels -->
         <source media="(max-width: 767px)" srcset="assets/images/icon-back.svg" height="16.17" width="17.447">
 
@@ -15,19 +15,24 @@
         <img src="assets/images/icon-back.svg" alt="Description de l'image">
       </picture>
     </button>
-      <picture>
-        <source media="(max-width: 767px)" [srcset]="value.mobile_title.src" [width]="value.mobile_title.sizes.width"
-                [height]="value.mobile_title.sizes.height">
+    <picture class="title">
+      <source media="(max-width: 767px)"
+              [srcset]="value.mobile_title.src"
+              [width]="value.mobile_title.dimensions.width"
+              [height]="value.mobile_title.dimensions.height">
 
-        <source media="(max-width: 1439px)"
-                [srcset]="value.tablet_title.src"
-                [width]="value.tablet_title.sizes.width"
-                [height]="value.tablet_title.sizes.height">
+      <source media="(max-width: 1439px)"
+              [srcset]="value.tablet_title.src"
+              [width]="value.tablet_title.dimensions.width"
+              [height]="value.tablet_title.dimensions.height">
 
-        <source media="(min-width: 1440px)" [srcset]="value.desktop_title.src" [width]="value.desktop_title.sizes.width"
-                [height]="value.desktop_title.sizes.height">
-        <img [src]="value.mobile_title.src" alt="page title" [width]="value.mobile_title.sizes.width"
-             [height]="value.mobile_title.sizes.height">
-      </picture>
+      <source media="(min-width: 1440px)"
+              [srcset]="value.desktop_title.src"
+              [width]="value.desktop_title.dimensions.width"
+              [height]="value.desktop_title.dimensions.height">
+      <img [src]="value.mobile_title.src" alt="page title"
+           [width]="value.mobile_title.dimensions.width"
+           [height]="value.mobile_title.dimensions.height">
+    </picture>
   </div>
 </div>

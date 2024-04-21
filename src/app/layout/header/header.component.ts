@@ -1,26 +1,26 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 import {RouterLink} from "@angular/router";
-import {NgOptimizedImage} from "@angular/common";
+import {NgOptimizedImage, NgStyle} from "@angular/common";
 import {TitleSizesDirective} from "../../directives/title-sizes.directive";
 
 export interface TitleImageSources {
   mobile_title: {
     src: string;
-    sizes: {
+    dimensions: {
       width: string;
       height: string;
     }
   };
   tablet_title: {
     src: string;
-    sizes: {
+    dimensions: {
       width: string;
       height: string;
     }
   };
   desktop_title: {
     src: string;
-    sizes: {
+    dimensions: {
       width: string;
       height: string;
     }
@@ -33,6 +33,7 @@ export interface TitleImageSources {
   imports: [
     RouterLink,
     TitleSizesDirective,
+    NgStyle,
   ],
   inputs: ["appTitleSizes"],
   templateUrl: './header.component.html',

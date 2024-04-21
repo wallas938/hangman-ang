@@ -90,6 +90,7 @@ main {
         .cta__how-to-play {
           @include HeadingS;
           transition: background 0.3s ease-in-out;
+          padding: toRem(12, 16);
           color: $White;
           width: 100%;
           border: none;

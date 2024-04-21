@@ -41,21 +41,21 @@ export class HowtoplayComponent {
   howToPlayTitle: TitleImageSources = {
     mobile_title: {
       src: "assets/images/howtoplay_m.png",
-      sizes: {
+      dimensions: {
         width: "185",
         height: "58"
       }
     },
     tablet_title: {
       src: "assets/images/howtoplay_t.png",
-      sizes: {
+      dimensions: {
         width: "343",
         height: "125"
       }
     },
     desktop_title: {
       src: "assets/images/howtoplay_d.png",
-      sizes: {
+      dimensions: {
         width: "448",
         height: "163"
       }

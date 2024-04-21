@@ -1,4 +1,7 @@
-@forward "sass/breakpoints";
+@import "sass/breakpoints";
+@import "sass/mixins";
+@import "sass/helpers/functions";
+
 @font-face {
   font-family: 'MouseMemoirs';
   src: url('/assets/fonts/MouseMemoirs-Regular.ttf');
@@ -22,24 +25,22 @@ a {
   cursor: pointer;
 }
 
-//.container {
-//  // 576px
-//  max-width: 38.4rem;
-//  margin: 0 auto;
-//}
+.container {
+  // 576px
+  max-width: toRem(576, 16);
+  margin: 0 auto;
+}
 
-/* @media screen and (min-width: $tablet-min) {
-
+@include breakpoint-up(medium) {
   .container {
-    // 1090px
-    max-width: 66.133333rem;
+    // 1035px
+    max-width: toRem(1035, 16);
   }
 }
 
-@media screen and (min-width: $desktop-min) {
-
+@include breakpoint-up(large) {
   .container {
-    // 1280px;
-    max-width: 85.333333rem;
+    // 1690px;
+    max-width: toRem(1690, 16);
   }
-} */
+}
