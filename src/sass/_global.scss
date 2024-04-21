@@ -41,6 +41,6 @@ a {
 @include breakpoint-up(large) {
   .container {
     // 1690px;
-    max-width: toRem(1690, 16);
+    max-width: toRem(1630, 16);
   }
 }
