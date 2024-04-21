@@ -10,6 +10,10 @@
   @include breakpoint-up(medium) {
     padding: toRem(61, 16) toRem(48, 16) 0 toRem(40, 16);
   }
+  @include breakpoint-up(large) {
+    padding: toRem(80, 16) toRem(112, 16) 0 toRem(112, 16);
+  }
+
   .container {
     .categories {
       padding-top: toRem(100, 16);
@@ -24,6 +28,12 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+      @include breakpoint-up(large) {
+        padding-top: toRem(155, 16);
+        row-gap: toRem(50, 16);
+        column-gap: toRem(32, 16);
+      }
+
       &__category {
         width: 100%;
         @include breakpoint-up(medium) {
@@ -31,7 +41,12 @@
           flex-basis: toRem(324, 16);
           height: toRem(182.66667, 16);
         }
+        @include breakpoint-up(large) {
+          flex-basis: toRem(384, 16);
+          height: toRem(190, 16);
+        }
       }
+
       &__category > button {
         width: 100%;
         min-width: toRem(324, 16);
