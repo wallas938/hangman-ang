@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, computed} from '@angular/core';
 import {CardComponent} from "../howtoplay/card/card.component";
 import {HeaderComponent, TitleImageSources} from "../layout/header/header.component";
 import {RouterLink} from "@angular/router";
@@ -47,5 +47,8 @@ export class CategoriesComponent {
                 height: "163"
             }
         },
+    }
+
+    constructor() {
     }
 }

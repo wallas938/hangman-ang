@@ -14,28 +14,5 @@
     @include breakpoint-up(medium) {
       justify-content: center;
     }
-    .back {
-      position: absolute;
-      left: 0;
-      width: toRem(40, 16);
-      height: toRem(40, 16);
-      border-radius: 100%;
-      border: none;
-      background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
-      box-shadow: 0px -5px 0px -1px rgba(157, 45, 245, 0.25) inset;
-      @include breakpoint-up(medium) {
-        width: toRem(64, 16);
-        height: toRem(64, 16);
-        background: var(--Pink-Gradient, linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%));
-        box-shadow: 0px -6px 0px 7px rgba(157, 45, 245, 0.25) inset;
-      }
-      @include breakpoint-up(large) {
-        width: toRem(94, 16);
-        height: toRem(94, 16);
-      }
-    }
-    .back:hover {
-      background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
-    }
   }
 }

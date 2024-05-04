@@ -6,7 +6,7 @@
     <ul class="categories">
       @for (name of categoryNames; track name) {
         <li class="categories__category" [ngClass]="name.toLowerCase()+'__category'">
-          <button [routerLink]="['/game', {cat: name}]">{{ name }}</button>
+          <button [queryParams]="{cat: name.replace(' ', '_').toLowerCase()}" [routerLink]="['/game']">{{ name }}</button>
         </li>
         }
     </ul>
