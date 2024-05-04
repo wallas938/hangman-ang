@@ -134,7 +134,6 @@
         justify-content: center;
         align-items: center;
         border-radius: toRem(12, 16);
-        cursor: pointer;
         @include breakpoint-up(medium) {
           width: toRem(88, 16);
           height: toRem(112, 16);
@@ -154,6 +153,9 @@
         &.found {
           background: $Blue;
           box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+          &:hover {
+            box-shadow: unset;
+          }
           span {
             color: $White;
             font-size: toRem(40, 16);

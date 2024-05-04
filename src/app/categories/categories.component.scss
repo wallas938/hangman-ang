@@ -57,6 +57,10 @@
         box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
         color: $White;
         font-size: toRem(24, 16);
+        &:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), #2463FF;
+          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+        }
         @include breakpoint-up(medium) {
           @include HeadingM;
           flex-grow: 1;
