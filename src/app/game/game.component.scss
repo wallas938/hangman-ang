@@ -10,6 +10,9 @@
   @include breakpoint-up(medium) {
     padding: toRem(64, 16) toRem(32, 16) 0 toRem(32, 16);
   }
+  @include breakpoint-up(large) {
+    padding: toRem(60, 16) toRem(126, 16) toRem(78, 16) toRem(112, 16);
+  }
 
   .container {
 
@@ -36,6 +39,10 @@
             padding-left: toRem(96, 16);
             @include HeadingM;
           }
+          @include breakpoint-up(large) {
+            padding-left: toRem(151, 16);
+            @include HeadingL;
+          }
         }
       }
 
@@ -59,6 +66,10 @@
             height: toRem(31, 16);
             padding: toRem(9, 16) toRem(11, 16);
           }
+          @include breakpoint-up(large) {
+            margin-right: toRem(40, 16);
+            width: toRem(240, 16);
+          }
 
           &__value {
             position: absolute;
@@ -70,6 +81,9 @@
               width: toRem(138, 16);
               height: toRem(13, 16);
               border-radius: toRem(96, 16);
+            }
+            @include breakpoint-up(large) {
+              width: toRem(217, 16);
             }
           }
         }
@@ -105,6 +119,12 @@
         row-gap: toRem(16, 16);
         max-width: toRem(991, 16);
       }
+      @include breakpoint-up(large) {
+        padding-top: toRem(88, 16);
+        column-gap: toRem(16, 16);
+        row-gap: toRem(16, 16);
+        max-width: toRem(1670, 16);
+      }
 
       &__letter {
         width: toRem(40, 16);
@@ -119,6 +139,11 @@
           width: toRem(88, 16);
           height: toRem(112, 16);
           border-radius: toRem(32, 16);
+        }
+        @include breakpoint-up(large) {
+          width: toRem(112, 16);
+          height: toRem(128, 16);
+          border-radius: toRem(40, 16);
         }
 
         &.space {
@@ -169,6 +194,12 @@
         row-gap: toRem(24, 16);
         max-width: toRem(991, 16);
       }
+      @include breakpoint-up(large) {
+        padding-top: toRem(120, 16);
+        column-gap: toRem(24, 16);
+        row-gap: toRem(24, 16);
+        max-width: toRem(1670, 16);
+      }
 
       &__letter {
         width: toRem(28.88889, 16);
@@ -181,6 +212,10 @@
         @include breakpoint-up(medium) {
           width: toRem(64, 16);
           height: toRem(84, 16);
+          border-radius: toRem(24, 16);
+        }
+        @include breakpoint-up(large) {
+          width: toRem(109, 16);
           border-radius: toRem(24, 16);
         }
 
