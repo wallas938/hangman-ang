@@ -1,6 +1,5 @@
-import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {map, Observable} from "rxjs";
 import {AsyncPipe, NgClass, NgIf, NgOptimizedImage, NgStyle, TitleCasePipe, UpperCasePipe} from "@angular/common";
 
 enum CATEGORIES {
