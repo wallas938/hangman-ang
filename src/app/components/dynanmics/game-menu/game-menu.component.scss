@@ -14,6 +14,10 @@
   @include breakpoint-up(medium) {
     top: toRem(324, 16);
   }
+  @include breakpoint-up(large) {
+    top: toRem(334, 16);
+  }
+
 
   .menu-container {
     padding-top: toRem(104, 16);
