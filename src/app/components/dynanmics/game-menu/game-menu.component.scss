@@ -11,6 +11,9 @@
   top: toRem(210, 16);
   left: 50%;
   transform: translateX(-50%);
+  @include breakpoint-up(medium) {
+    top: toRem(324, 16);
+  }
 
   .menu-container {
     padding-top: toRem(104, 16);
@@ -20,15 +23,21 @@
     border-radius: 48px;
     background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
     box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px $Blue inset;
+    @include breakpoint-up(medium) {
+      padding-top: toRem(120, 16);
+      width: toRem(592, 16);
+      border-radius: 72px;
+    }
 
     .menu-message {
+      top: toRem(-52, 16);
       position: absolute;
       left: 50%;
-      top: toRem(-52, 16);
       transform: translateX(-50%);
       height: toRem(113, 16);
       @include breakpoint-up(medium) {
         height: toRem(161, 16);
+        top: toRem(-89, 16);
       }
 
       &.paused {
