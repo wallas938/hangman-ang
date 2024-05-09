@@ -1,20 +1,25 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {AfterViewInit, Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {NgClass, NgOptimizedImage} from "@angular/common";
-import {routes} from "./app.routes";
+import {GameService} from "./services/game.service";
+import {GameMenuComponent} from "./components/dynanmics/game-menu/game-menu.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, NgOptimizedImage, NgClass],
+  imports: [
+    RouterOutlet, RouterLink,
+    RouterLinkActive, NgOptimizedImage,
+    NgClass, GameMenuComponent],
+  providers: [GameService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'hangman';
-  gradientBG: boolean = false
+  gradientBG: boolean = false;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private gameService: GameService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -23,7 +28,7 @@ export class AppComponent implements OnInit{
         const path = event.url;
         this.gradientBG = path != "/home";
       }
-    })
+    });
   }
 
 

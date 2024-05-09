@@ -1,6 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {AsyncPipe, NgClass, NgIf, NgOptimizedImage, NgStyle, TitleCasePipe, UpperCasePipe} from "@angular/common";
+import {GameMenuComponent} from "../components/dynanmics/game-menu/game-menu.component";
+import {GameService} from "../services/game.service";
 
 enum CATEGORIES {
   MOVIES = "Movies",
@@ -9,6 +11,12 @@ enum CATEGORIES {
   CAPITAL_CITIES = "Capital Cities",
   ANIMALS = "Animals",
   SPORTS = "Sports",
+}
+
+export enum GAMES_STATES {
+  PAUSED = "Paused",
+  WIN = "You Win",
+  LOSE = "You Lose",
 }
 
 interface GameData {
@@ -43,12 +51,15 @@ interface KeyBoardLetter {
     NgStyle,
     NgIf,
     NgClass,
-    NgOptimizedImage
+    NgOptimizedImage,
+    GameMenuComponent,
   ],
+  providers: [GameService],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit {
+  @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
   data: GameData = {
     "categories": {
       "Movies": [
@@ -250,11 +261,10 @@ export class GameComponent implements OnInit {
   keyboardLetters: KeyBoardLetter [] = [];
   mysteryWords: MysteryWord [] = [];
   mysteryWord: string[] = [];
-
+  gameCurrentState: GAMES_STATES = GAMES_STATES.PAUSED;
   // mysteryWords: MysteryWordLetter [] = [];
 
-  constructor(private route: ActivatedRoute) {
-
+  constructor(private route: ActivatedRoute, private gameService: GameService) {
   }
 
   ngOnInit(): void {
@@ -264,6 +274,18 @@ export class GameComponent implements OnInit {
       });
     this.initGame();
   }
+
+  openMenu() {
+    this.gameMenuRef.createComponent(GameMenuComponent);
+  }
+
+  closeMenu() {
+    this.gameService.closeMenu();
+  }
+
+  // openMenu() {
+  //   this.viewContainerRef.createComponent(GameMenuComponent);
+  // }
 
   initGame() {
     const notSelectedWords: MysteryWord[] = [];

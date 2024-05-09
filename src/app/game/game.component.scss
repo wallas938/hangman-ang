@@ -6,6 +6,7 @@
 @import "sass/typography";
 
 .root {
+  position: relative;
   padding: toRem(46, 16) toRem(25, 16) 0 toRem(26, 16);
   @include breakpoint-up(medium) {
     padding: toRem(64, 16) toRem(32, 16) 0 toRem(32, 16);
