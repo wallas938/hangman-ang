@@ -1,0 +1,106 @@
+@import "sass/breakpoints";
+@import "sass/mixins";
+@import "sass/colors";
+@import "sass/helpers/functions";
+@import "sass/layout/index";
+@import "sass/typography";
+
+.root {
+  position: absolute;
+  z-index: 1;
+  top: toRem(210, 16);
+  left: 50%;
+  transform: translateX(-50%);
+
+  .menu-container {
+    padding-top: toRem(104, 16);
+    position: relative;
+    width: toRem(324, 16);
+    height: toRem(445, 16);
+    border-radius: 48px;
+    background: linear-gradient(180deg, #344ABA 0%, rgba(0, 20, 121, 0.83) 100%);
+    box-shadow: 0px -8px 0px 4px #140E66 inset, 0px 6px 0px 8px $Blue inset;
+
+    .menu-message {
+      position: absolute;
+      left: 50%;
+      top: toRem(-52, 16);
+      transform: translateX(-50%);
+      height: toRem(113, 16);
+      @include breakpoint-up(medium) {
+        height: toRem(161, 16);
+      }
+
+      &.paused {
+        width: toRem(186, 16);
+        @include breakpoint-up(medium) {
+          width: toRem(265, 16);
+        }
+      }
+
+      &.you-win {
+        width: toRem(211, 16);
+        @include breakpoint-up(medium) {
+          width: toRem(301, 16);
+        }
+      }
+
+      &.you-lose {
+        width: toRem(225, 16);
+        @include breakpoint-up(medium) {
+          width: toRem(320, 16);
+        }
+      }
+    }
+
+    .cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: toRem(34, 16);
+
+      button {
+        padding: toRem(12, 16) toRem(64, 16);
+        @include HeadingS;
+        border-radius: toRem(40, 16);
+        border: none;
+        color: $White;
+
+        &.continue, &.new-cat {
+          background: $Blue;
+          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+        }
+
+        &.continue:hover, &.new-cat:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), $Blue;
+          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+        }
+
+        &.quit {
+          background: linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+          box-shadow: 0px -5px 0px -1px rgba(157, 45, 245, 0.25) inset;
+          @include breakpoint-up(medium) {
+            background: var(--Pink-Gradient, linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%));
+            box-shadow: 0px -6px 0px 7px rgba(157, 45, 245, 0.25) inset;
+          }
+        }
+
+        &.quit:hover {
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.25) 100%), linear-gradient(180deg, #FE71FE 16.42%, #7199FF 100%);
+        }
+      }
+    }
+  }
+}
+
+.backdrop {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.75;
+  background: linear-gradient(180deg, #1A043A 0%, #151278 70.31%, #2B1677 100%);
+}
+

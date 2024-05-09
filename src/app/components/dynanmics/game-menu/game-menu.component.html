@@ -1,0 +1,15 @@
+<div class="root">
+  <div class="menu-container">
+    <img class="menu-message" [ngClass]="{
+    'paused': gameState === GAMES_STATES.PAUSED,
+    'you-win': gameState === GAMES_STATES.WIN,
+    'you-lose': gameState === GAMES_STATES.LOSE,
+    }" [src]="menuMessageSrc()" alt="game current state massage">
+    <div class="cta">
+      <button class="continue">CONTINUE</button>
+      <button class="new-cat">NEW CATEGORY</button>
+      <button class="quit">QUIT GAME</button>
+    </div>
+  </div>
+</div>
+<div class="backdrop"></div>
