@@ -6,10 +6,10 @@
     'you-lose': gameState === GAMES_STATES.LOSE,
     }" [src]="menuMessageSrc()" alt="game current state massage">
     <div class="cta">
-      <button class="continue">CONTINUE</button>
-      <button class="new-cat">NEW CATEGORY</button>
-      <button class="quit">QUIT GAME</button>
+      <button class="continue" (click)="closeMenu()">CONTINUE</button>
+      <button class="new-cat" routerLink="/choose-category">NEW CATEGORY</button>
+      <button class="quit" (click)="closeMenu()" routerLink="/">QUIT GAME</button>
     </div>
   </div>
 </div>
-<div class="backdrop"></div>
+<div class="backdrop" (click)="closeMenu()"></div>
