@@ -1,59 +1,62 @@
 <div class="root">
-<!--  <ng-template #gameMenuRef></ng-template>-->
-  <app-game-menu [gameState]="gameCurrentState"></app-game-menu>
-<!--  <div class="container">-->
-<!--    <header>-->
-<!--      <div class="header__left">-->
-<!--        <button (click)="openMenu()" class="menu btn-style">-->
-<!--          <picture class="menu-btn">-->
-<!--            <source media="(max-width: 767px)" srcset="assets/images/icon-menu.svg" height="16.17" width="17.447">-->
-<!--            <source media="(max-width: 1439px)" srcset="assets/images/icon-menu.svg" height="25.872" width="27.915">-->
-<!--            <source media="(min-width: 1440px)" srcset="assets/images/icon-menu.svg" height="38" width="41">-->
-<!--            <img ngSrc="assets/images/icon-menu.svg" alt="Hamburger menu icon" height="16.17" width="17.447">-->
-<!--          </picture>-->
-<!--        </button>-->
-<!--        <h2 class="category">-->
-<!--          @if (title !== 'tv shows') {-->
-<!--            {{ title | titlecase }}-->
-<!--          } @else {-->
-<!--            TV Shows-->
-<!--          }-->
-<!--        </h2>-->
-<!--      </div>-->
-<!--      <div class="header__right">-->
-<!--        <div class="live-bar">-->
-<!--          <div class="live-bar__value"></div>-->
-<!--        </div>-->
-<!--        <picture class="heart" (click)="closeMenu()">-->
-<!--          <source media="(max-width: 767px)" srcset="assets/images/icon-heart.svg" height="24" width="26.158">-->
-<!--          <source media="(max-width: 1439px)" srcset="assets/images/icon-heart.svg" height="48.933" width="53.333">-->
-<!--          <source media="(min-width: 1440px)" srcset="assets/images/icon-heart.svg" height="48.933" width="53.333">-->
-<!--          <img src="assets/images/icon-heart.svg" alt="Heart icon">-->
-<!--        </picture>-->
-<!--      </div>-->
-<!--    </header>-->
-<!--    <ul class="mystery-word">-->
-<!--      @for (letter of mysteryWord; track letter) {-->
-<!--        <li class="mystery-word__letter"-->
-<!--            [ngClass]="{-->
-<!--            'space': letter === ' ',-->
-<!--            'found': playerInputs.includes(letter.toUpperCase()),-->
-<!--            'not-found': !playerInputs.includes(letter.toUpperCase()) }"-->
-<!--        >-->
-<!--          <span>{{ letter | uppercase }}</span>-->
-<!--        </li>-->
-<!--      }-->
-<!--    </ul>-->
-<!--    <ul class="keyboard">-->
-<!--      @for (letter of keyboardLetters; track letter.value) {-->
-<!--        <li (click)="takePlayerInput(letter.value)" class="keyboard__letter"-->
-<!--            [ngClass]="{-->
-<!--            'used': playerInputs.includes(letter.value),-->
-<!--            'not-used': !playerInputs.includes(letter.value) }">-->
-<!--          <button>{{ letter.value }}</button>-->
-<!--        </li>-->
-<!--      }-->
-<!--    </ul>-->
-<!--  </div>-->
+  <app-game-menu *ngIf="isGameMenuOpened === GAME_MENU_STATE.OPENED"
+                 [gameState]="gameCurrentState"
+                 (closeMenuEvent)="closeMenu($event)">
+
+  </app-game-menu>
+  <div class="container">
+    <header>
+      <div class="header__left">
+        <button (click)="openMenu()" class="menu btn-style">
+          <picture class="menu-btn">
+            <source media="(max-width: 767px)" srcset="assets/images/icon-menu.svg" height="16.17" width="17.447">
+            <source media="(max-width: 1439px)" srcset="assets/images/icon-menu.svg" height="25.872" width="27.915">
+            <source media="(min-width: 1440px)" srcset="assets/images/icon-menu.svg" height="38" width="41">
+            <img src="assets/images/icon-menu.svg" alt="Hamburger menu icon" height="16.17" width="17.447">
+          </picture>
+        </button>
+        <h2 class="category">
+          @if (title !== 'tv shows') {
+            {{ title | titlecase }}
+          } @else {
+            TV Shows
+          }
+        </h2>
+      </div>
+      <div class="header__right">
+        <div class="live-bar">
+          <div class="live-bar__value"></div>
+        </div>
+        <picture class="heart">
+          <source media="(max-width: 767px)" srcset="assets/images/icon-heart.svg" height="24" width="26.158">
+          <source media="(max-width: 1439px)" srcset="assets/images/icon-heart.svg" height="48.933" width="53.333">
+          <source media="(min-width: 1440px)" srcset="assets/images/icon-heart.svg" height="48.933" width="53.333">
+          <img src="assets/images/icon-heart.svg" alt="Heart icon">
+        </picture>
+      </div>
+    </header>
+    <ul class="mystery-word">
+      @for (letter of mysteryWord; track letter) {
+        <li class="mystery-word__letter"
+            [ngClass]="{
+            'space': letter === ' ',
+            'found': playerInputs.includes(letter.toUpperCase()),
+            'not-found': !playerInputs.includes(letter.toUpperCase()) }"
+        >
+          <span>{{ letter | uppercase }}</span>
+        </li>
+      }
+    </ul>
+    <ul class="keyboard">
+      @for (letter of keyboardLetters; track letter.value) {
+        <li (click)="takePlayerInput(letter.value)" class="keyboard__letter"
+            [ngClass]="{
+            'used': playerInputs.includes(letter.value),
+            'not-used': !playerInputs.includes(letter.value) }">
+          <button>{{ letter.value }}</button>
+        </li>
+      }
+    </ul>
+  </div>
 </div>
 

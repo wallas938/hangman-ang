@@ -7,7 +7,7 @@
 
 .root {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: toRem(210, 16);
   left: 50%;
   transform: translateX(-50%);
@@ -108,7 +108,7 @@
 
 .backdrop {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   top: 0;
   left: 0;
   bottom: 0;

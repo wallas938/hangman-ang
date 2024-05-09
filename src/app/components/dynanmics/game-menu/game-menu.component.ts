@@ -1,13 +1,25 @@
-import {Component, Input, OnChanges, OnInit, signal, SimpleChanges, WritableSignal} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  signal,
+  SimpleChanges,
+  WritableSignal
+} from '@angular/core';
 import {NgClass, NgOptimizedImage} from "@angular/common";
-import {GAMES_STATES} from "../../../game/game.component";
+import {GAME_MENU_STATE, GAMES_STATES} from "../../../models/AppModels";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-game-menu',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    NgClass
+    NgClass,
+    RouterLink
   ],
   templateUrl: './game-menu.component.html',
   styleUrl: './game-menu.component.scss'
@@ -15,6 +27,7 @@ import {GAMES_STATES} from "../../../game/game.component";
 export class GameMenuComponent implements OnInit, OnChanges {
 
   @Input({ required: true }) gameState!: GAMES_STATES;
+  @Output() closeMenuEvent: EventEmitter<GAME_MENU_STATE> = new EventEmitter();
 
   menuMessageSrc:  WritableSignal<string> = signal("assets/images/paused.png");
 
@@ -38,4 +51,8 @@ export class GameMenuComponent implements OnInit, OnChanges {
   }
 
   protected readonly GAMES_STATES = GAMES_STATES;
+
+  closeMenu() {
+    this.closeMenuEvent.next(GAME_MENU_STATE.CLOSED)
+  }
 }

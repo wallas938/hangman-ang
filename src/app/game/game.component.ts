@@ -1,44 +1,18 @@
 import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
-import {AsyncPipe, NgClass, NgIf, NgOptimizedImage, NgStyle, TitleCasePipe, UpperCasePipe} from "@angular/common";
+import {
+  AsyncPipe,
+  NgClass,
+  NgIf,
+  NgOptimizedImage,
+  NgStyle,
+  NgTemplateOutlet,
+  TitleCasePipe,
+  UpperCasePipe
+} from "@angular/common";
 import {GameMenuComponent} from "../components/dynanmics/game-menu/game-menu.component";
 import {GameService} from "../services/game.service";
-
-enum CATEGORIES {
-  MOVIES = "Movies",
-  TV_SHOWS = "TV Shows",
-  COUNTRIES = "Countries",
-  CAPITAL_CITIES = "Capital Cities",
-  ANIMALS = "Animals",
-  SPORTS = "Sports",
-}
-
-export enum GAMES_STATES {
-  PAUSED = "Paused",
-  WIN = "You Win",
-  LOSE = "You Lose",
-}
-
-interface GameData {
-  categories: {
-    "Movies": MysteryWord[],
-    "TV Shows": MysteryWord[],
-    "Countries": MysteryWord[],
-    "Capital Cities": MysteryWord[],
-    "Animals": MysteryWord[],
-    "Sports": MysteryWord[],
-  }
-}
-
-interface MysteryWord {
-  name: string;
-  selected: boolean;
-}
-
-interface KeyBoardLetter {
-  value: string;
-  used: boolean;
-}
+import {CATEGORIES, GAME_MENU_STATE, GameData, GAMES_STATES, KeyBoardLetter, MysteryWord} from "../models/AppModels";
 
 @Component({
   selector: 'app-game',
@@ -53,13 +27,15 @@ interface KeyBoardLetter {
     NgClass,
     NgOptimizedImage,
     GameMenuComponent,
+    NgTemplateOutlet,
   ],
   providers: [GameService],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit {
-  @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
+  // @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
+  isGameMenuOpened: GAME_MENU_STATE = GAME_MENU_STATE.CLOSED;
   data: GameData = {
     "categories": {
       "Movies": [
@@ -276,11 +252,11 @@ export class GameComponent implements OnInit {
   }
 
   openMenu() {
-    this.gameMenuRef.createComponent(GameMenuComponent);
+    this.isGameMenuOpened = GAME_MENU_STATE.OPENED;
   }
 
-  closeMenu() {
-    this.gameService.closeMenu();
+  closeMenu($event: any) {
+    this.isGameMenuOpened = GAME_MENU_STATE.CLOSED;
   }
 
   // openMenu() {
@@ -295,7 +271,6 @@ export class GameComponent implements OnInit {
     let category: CATEGORIES = this.setCategoryName(this.title);
 
     this.mysteryWords = this.data.categories[category];
-
 
     this.mysteryWords
       .filter(w => !w.selected)
@@ -315,8 +290,6 @@ export class GameComponent implements OnInit {
 
   takePlayerInput(input: string): void {
     this.playerInputs.push(input);
-    console.log(input)
-    console.log(this.playerInputs)
   }
 
   generateAlphabet(): KeyBoardLetter[] {
@@ -358,4 +331,6 @@ export class GameComponent implements OnInit {
         return CATEGORIES.MOVIES
     }
   }
+
+  protected readonly GAME_MENU_STATE = GAME_MENU_STATE;
 }
