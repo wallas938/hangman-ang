@@ -1,9 +1,7 @@
 <div class="root">
   <app-game-menu *ngIf="isGameMenuOpened === GAME_MENU_STATE.OPENED"
                  [gameState]="gameCurrentState"
-                 (closeMenuEvent)="closeMenu($event)">
-
-  </app-game-menu>
+                 (closeMenuEvent)="closeMenu($event)"></app-game-menu>
   <div class="container">
     <header>
       <div class="header__left">
@@ -41,10 +39,11 @@
             [ngClass]="{
             'space': letter === ' ',
             'found': playerInputs.includes(letter.toUpperCase()),
-            'not-found': !playerInputs.includes(letter.toUpperCase()) }"
+            'not-found': letter !== ' ' && !playerInputs.includes(letter.toUpperCase()) }"
         >
           <span>{{ letter | uppercase }}</span>
         </li>
+        <br *ngIf="mysteryWord.length > 1">
       }
     </ul>
     <ul class="keyboard">
