@@ -35,6 +35,7 @@ import {CATEGORIES, GAME_MENU_STATE, GameData, GAMES_STATES, KeyBoardLetter, Mys
 })
 export class GameComponent implements OnInit {
   // @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
+
   wordsCount: number = 0;
   lettersCount: number = 0;
   isGameMenuOpened: GAME_MENU_STATE = GAME_MENU_STATE.CLOSED;

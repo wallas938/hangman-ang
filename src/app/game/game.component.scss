@@ -138,24 +138,24 @@
         }
 
         .mystery-word__letter {
-          //width: toRem(40, 16);
-          //height: toRem(66, 16);
-          width: toRem(32, 16);
-          height: toRem(48, 16);
+          width: toRem(40, 16);
+          height: toRem(66, 16);
+          //width: toRem(32, 16);
+          //height: toRem(48, 16);
           border: 0 solid transparent;
           border-radius: toRem(12, 16);
           @include breakpoint-up(medium) {
-            //width: toRem(88, 16);
-            //height: toRem(112, 16);
-            width: toRem(53, 16);
-            height: toRem(80, 16);
+            width: toRem(88, 16);
+            height: toRem(112, 16);
+            //width: toRem(53, 16);
+            //height: toRem(80, 16);
             border-radius: toRem(32, 16);
           }
           @include breakpoint-up(large) {
-            //width: toRem(112, 16);
-            //height: toRem(128, 16);
-            width: toRem(65, 16);
-            height: toRem(95, 16);
+            width: toRem(112, 16);
+            height: toRem(128, 16);
+            //width: toRem(65, 16);
+            //height: toRem(95, 16);
             border-radius: toRem(40, 16);
           }
 
@@ -177,7 +177,8 @@
 
             > span {
               color: $White;
-              font-size: toRem(32, 16);
+              font-size: toRem(40, 16);
+              //font-size: toRem(32, 16);
               font-style: normal;
               font-weight: 400;
               line-height: 150%; /* 36px */
