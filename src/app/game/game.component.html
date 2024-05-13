@@ -1,9 +1,7 @@
 <div class="root">
   <app-game-menu *ngIf="isGameMenuOpened === GAME_MENU_STATE.OPENED"
                  [gameState]="gameCurrentState"
-                 (closeMenuEvent)="closeMenu($event)">
-
-  </app-game-menu>
+                 (closeMenuEvent)="closeMenu($event)"></app-game-menu>
   <div class="container">
     <header>
       <div class="header__left">
@@ -35,18 +33,28 @@
         </picture>
       </div>
     </header>
-    <ul class="mystery-word">
-      @for (letter of mysteryWord; track letter) {
-        <li class="mystery-word__letter"
-            [ngClass]="{
-            'space': letter === ' ',
+    <div class="mystery-word">
+      @for (word of mysteryWord; track word; let lastWord = $last) {
+        <div class="letter_group">
+          @for (letter of word; track letter; let lastLetter = $last) {
+
+            <div class="mystery-word__letter"
+                 [ngClass]="{
             'found': playerInputs.includes(letter.toUpperCase()),
-            'not-found': !playerInputs.includes(letter.toUpperCase()) }"
-        >
-          <span>{{ letter | uppercase }}</span>
-        </li>
+            'not-found': letter !== ' ' && !playerInputs.includes(letter.toUpperCase()) }"
+            >
+              @if (playerInputs.includes(letter.toUpperCase())) {
+                <span>{{ letter | uppercase }}</span>
+              }
+
+            </div>
+            @if (lastLetter && !lastWord) {
+              <span class="mystery-word__letter space"></span>
+            }
+          }
+        </div>
       }
-    </ul>
+    </div>
     <ul class="keyboard">
       @for (letter of keyboardLetters; track letter.value) {
         <li (click)="takePlayerInput(letter.value)" class="keyboard__letter"

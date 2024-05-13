@@ -104,81 +104,108 @@
       }
     }
 
-    .mystery-word {
+    .mystery-word { // div
       padding-top: toRem(78, 16);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      column-gap: toRem(8, 16);
+      margin: 0 auto;
       row-gap: toRem(12, 16);
       max-width: toRem(485, 16);
-      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
       @include breakpoint-up(medium) {
         padding-top: toRem(111, 16);
-        column-gap: toRem(12, 16);
         row-gap: toRem(16, 16);
         max-width: toRem(991, 16);
       }
       @include breakpoint-up(large) {
         padding-top: toRem(88, 16);
-        column-gap: toRem(16, 16);
         row-gap: toRem(16, 16);
         max-width: toRem(1670, 16);
       }
 
-      &__letter {
-        width: toRem(40, 16);
-        height: toRem(66, 16);
-        border: 0 solid transparent;
+      .letter_group {
         display: flex;
-        justify-content: center;
+        flex-wrap: wrap;
         align-items: center;
-        border-radius: toRem(12, 16);
+        column-gap: toRem(8, 16);
+        row-gap: toRem(12, 16);
         @include breakpoint-up(medium) {
-          width: toRem(88, 16);
-          height: toRem(112, 16);
-          border-radius: toRem(32, 16);
+          flex-wrap: nowrap;
+          justify-content: center;
+          column-gap: toRem(12, 16);
         }
         @include breakpoint-up(large) {
-          width: toRem(112, 16);
-          height: toRem(128, 16);
-          border-radius: toRem(40, 16);
+          column-gap: toRem(16, 16);
         }
 
-        &.space {
-          background: unset;
-          box-shadow: unset;
-        }
+        .mystery-word__letter {
+          //width: toRem(40, 16);
+          //height: toRem(66, 16);
+          width: toRem(32, 16);
+          height: toRem(48, 16);
+          border: 0 solid transparent;
+          border-radius: toRem(12, 16);
+          @include breakpoint-up(medium) {
+            //width: toRem(88, 16);
+            //height: toRem(112, 16);
+            width: toRem(53, 16);
+            height: toRem(80, 16);
+            border-radius: toRem(32, 16);
+          }
+          @include breakpoint-up(large) {
+            //width: toRem(112, 16);
+            //height: toRem(128, 16);
+            width: toRem(65, 16);
+            height: toRem(95, 16);
+            border-radius: toRem(40, 16);
+          }
 
-        &.found {
-          background: $Blue;
-          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
-          &:hover {
+          &.space {
+            background: unset;
             box-shadow: unset;
           }
-          span {
-            color: $White;
-            font-size: toRem(40, 16);
-            font-style: normal;
-            font-weight: 400;
-            line-height: 150%; /* 36px */
-            letter-spacing: -0.48px;
+
+          &.found {
+            background: $Blue;
+            box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+              box-shadow: unset;
+            }
+
+            > span {
+              color: $White;
+              font-size: toRem(32, 16);
+              font-style: normal;
+              font-weight: 400;
+              line-height: 150%; /* 36px */
+              letter-spacing: -0.48px;
+            }
+          }
+
+          &.not-found {
+            opacity: 0.25;
+            background: $Blue;
+            box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
+
+            span {
+              display: none;
+            }
           }
         }
-
-        &.not-found {
-          opacity: 0.25;
-          background: $Blue;
-          box-shadow: 0px -2px 0px 3px #140E66 inset, 0px 1px 0px 6px #3C74FF inset;
-          span {
-            display: none;
-          }
-        }
-
       }
 
-
+      .letter_group:not(:last-child) {
+        margin-bottom: toRem(8, 16);
+        @include breakpoint-up(medium) {
+          margin-bottom: toRem(12, 16);
+        }
+        @include breakpoint-up(large) {
+          margin-bottom: toRem(16, 16);
+        }
+      }
     }
 
     .keyboard {
@@ -192,13 +219,12 @@
       max-width: toRem(485, 16);
       margin: 0 auto;
       @include breakpoint-up(medium) {
-        padding-top: toRem(134, 16);
+        padding-top: toRem(90, 16);
         column-gap: toRem(16, 16);
         row-gap: toRem(24, 16);
         max-width: toRem(991, 16);
       }
       @include breakpoint-up(large) {
-        padding-top: toRem(120, 16);
         column-gap: toRem(24, 16);
         row-gap: toRem(24, 16);
         max-width: toRem(1670, 16);
@@ -235,10 +261,12 @@
             @include HeadingM;
           }
         }
+
         &.used {
           background-color: $White;
           opacity: 0.25;
         }
+
         &.not-used {
           background-color: $White;
         }

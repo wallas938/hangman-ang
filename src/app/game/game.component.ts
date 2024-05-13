@@ -35,6 +35,8 @@ import {CATEGORIES, GAME_MENU_STATE, GameData, GAMES_STATES, KeyBoardLetter, Mys
 })
 export class GameComponent implements OnInit {
   // @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
+  wordsCount: number = 0;
+  lettersCount: number = 0;
   isGameMenuOpened: GAME_MENU_STATE = GAME_MENU_STATE.CLOSED;
   data: GameData = {
     "categories": {
@@ -259,10 +261,6 @@ export class GameComponent implements OnInit {
     this.isGameMenuOpened = GAME_MENU_STATE.CLOSED;
   }
 
-  // openMenu() {
-  //   this.viewContainerRef.createComponent(GameMenuComponent);
-  // }
-
   initGame() {
     const notSelectedWords: MysteryWord[] = [];
 
@@ -281,10 +279,13 @@ export class GameComponent implements OnInit {
     let randomNumber = Math.floor(Math.random() * notSelectedWords.length);
 
     mysteryWord = notSelectedWords.at(randomNumber);
-
-    // console.log(Math.floor(Math.random() * notSelectedWords.length))
-    this.mysteryWord = this.getMysteryWord(mysteryWord!.name)
-
+    this.wordsCount = mysteryWord!.name.split(" ").length;
+    this.lettersCount = mysteryWord!.name.length;
+    // this.mysteryWord = mysteryWord!.name.toUpperCase().split(' '); // string[]
+    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' '); // string[]
+    console.log(this.mysteryWord);
+    console.log(this.wordsCount, " Number of words");
+    console.log(this.lettersCount, " Number of letters");
     this.keyboardLetters = this.generateAlphabet();
   }
 
