@@ -281,9 +281,9 @@ export class GameComponent implements OnInit {
     mysteryWord = notSelectedWords.at(randomNumber);
     this.wordsCount = mysteryWord!.name.split(" ").length;
     this.lettersCount = mysteryWord!.name.length;
-    // this.mysteryWord = this.getMysteryWord(mysteryWord!.name); a décommenter
-    this.mysteryWord = this.getMysteryWord("United Kingdom");
-    console.log(mysteryWord?.name.split(" "))
+    // this.mysteryWord = mysteryWord!.name.toUpperCase().split(' '); // string[]
+    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' '); // string[]
+    console.log(this.mysteryWord);
     console.log(this.wordsCount, " Number of words");
     console.log(this.lettersCount, " Number of letters");
     this.keyboardLetters = this.generateAlphabet();
