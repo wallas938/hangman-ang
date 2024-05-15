@@ -240,6 +240,7 @@ export class GameComponent implements OnInit {
   mysteryWords: MysteryWord [] = [];
   mysteryWord: string[] = [];
   gameCurrentState: GAMES_STATES = GAMES_STATES.PAUSED;
+
   // mysteryWords: MysteryWordLetter [] = [];
 
   constructor(private route: ActivatedRoute, private gameService: GameService) {
@@ -276,16 +277,17 @@ export class GameComponent implements OnInit {
         notSelectedWords.push(w);
         return w
       })
+
     let randomNumber = Math.floor(Math.random() * notSelectedWords.length);
 
     mysteryWord = notSelectedWords.at(randomNumber);
+
     this.wordsCount = mysteryWord!.name.split(" ").length;
+
     this.lettersCount = mysteryWord!.name.length;
-    // this.mysteryWord = mysteryWord!.name.toUpperCase().split(' '); // string[]
-    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' '); // string[]
-    console.log(this.mysteryWord);
-    console.log(this.wordsCount, " Number of words");
-    console.log(this.lettersCount, " Number of letters");
+
+    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().toUpperCase().split(' ');
+
     this.keyboardLetters = this.generateAlphabet();
   }
 
@@ -294,15 +296,34 @@ export class GameComponent implements OnInit {
   }
 
   generateAlphabet(): KeyBoardLetter[] {
-    const alphabet: KeyBoardLetter[] = [];
-    for (let i = 65; i <= 90; i++) {
-      const l: KeyBoardLetter = {
-        value: String.fromCharCode(i),
-        used: false
-      };
-      alphabet.push(l);
-    }
-    return alphabet;
+    return [{"value": "A", "used": false},
+      {"value": "B", "used": false},
+      {"value": "C", "used": false},
+      {"value": "D", "used": false},
+      {"value": "E", "used": false},
+      {"value": "F", "used": false},
+      {"value": "G", "used": false},
+      {"value": "H", "used": false},
+      {"value": "I", "used": false},
+      {"value": "J", "used": false},
+      {"value": "K", "used": false},
+      {"value": "L", "used": false},
+      {"value": "M", "used": false},
+      {"value": "N", "used": false},
+      {"value": "O", "used": false},
+      {"value": "P", "used": false},
+      {"value": "Q", "used": false},
+      {"value": "R", "used": false},
+      {"value": "S", "used": false},
+      {"value": "T", "used": false},
+      {"value": "U", "used": false},
+      {"value": "V", "used": false},
+      {"value": "W", "used": false},
+      {"value": "X", "used": false},
+      {"value": "Y", "used": false},
+      {"value": "Z", "used": false},
+      {"value": "'", used: false}
+    ];
   }
 
   formatTitle(title: string): string {
