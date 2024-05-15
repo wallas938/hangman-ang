@@ -25,9 +25,6 @@ import {RouterLink} from "@angular/router";
   styleUrl: './game-menu.component.scss'
 })
 export class GameMenuComponent implements OnInit, OnChanges {
-
-
-
   @Input({ required: true }) gameState!: GAMES_STATES;
   @Output() closeMenuEvent: EventEmitter<GAME_MENU_STATE> = new EventEmitter();
 

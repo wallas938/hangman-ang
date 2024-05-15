@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {
   AsyncPipe,
@@ -237,13 +237,14 @@ export class GameComponent implements OnInit {
   playerInputs: string[] = [];
   title!: string;
   keyboardLetters: KeyBoardLetter [] = [];
+  notSelectedWords: MysteryWord[] = [];
   mysteryWords: MysteryWord [] = [];
   mysteryWord: string[] = [];
   gameCurrentState: GAMES_STATES = GAMES_STATES.PAUSED;
+  numberOfLetterToFound!: number;
+  numberOfLetterFound: number = 0;
 
-  // mysteryWords: MysteryWordLetter [] = [];
-
-  constructor(private route: ActivatedRoute, private gameService: GameService) {
+  constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -254,16 +255,41 @@ export class GameComponent implements OnInit {
     this.initGame();
   }
 
-  openMenu() {
-    this.isGameMenuOpened = GAME_MENU_STATE.OPENED;
+  resetGame() {
+    this.notSelectedWords = [];
+    this.numberOfLetterFound = 0;
+    this.playerInputs = [];
+    this.mysteryWords
+      .map(value => {
+        if (this.mysteryWord.join(' ') === value.name) {
+          value.selected = true;
+        }
+        return value;
+      })
+      .filter(w => !w.selected)
+      .map(w => {
+        this.notSelectedWords.push(w);
+        return w
+      });
+
+    this.numberOfLetterToFound = new Set(this.mysteryWord.join('')).size;
+
+    this.initGame();
   }
 
-  closeMenu($event: any) {
+  openMenu(state: GAMES_STATES) {
+    this.isGameMenuOpened = GAME_MENU_STATE.OPENED;
+    this.gameCurrentState = state;
+  }
+
+  closeMenu() {
     this.isGameMenuOpened = GAME_MENU_STATE.CLOSED;
+    if(this.gameCurrentState === GAMES_STATES.WIN) {
+      this.resetGame();
+    }
   }
 
   initGame() {
-    const notSelectedWords: MysteryWord[] = [];
 
     let mysteryWord: MysteryWord | undefined;
 
@@ -274,25 +300,38 @@ export class GameComponent implements OnInit {
     this.mysteryWords
       .filter(w => !w.selected)
       .map(w => {
-        notSelectedWords.push(w);
+        this.notSelectedWords.push(w);
         return w
       })
 
-    let randomNumber = Math.floor(Math.random() * notSelectedWords.length);
+    let randomNumber = Math.floor(Math.random() * this.notSelectedWords.length);
 
-    mysteryWord = notSelectedWords.at(randomNumber);
+    mysteryWord = this.notSelectedWords.at(randomNumber);
 
     this.wordsCount = mysteryWord!.name.split(" ").length;
 
     this.lettersCount = mysteryWord!.name.length;
 
-    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().toUpperCase().split(' ');
+    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' ');
+
+    this.numberOfLetterToFound = new Set(this.mysteryWord.join('')).size;
 
     this.keyboardLetters = this.generateAlphabet();
+
+    console.log(this.mysteryWord)
   }
 
   takePlayerInput(input: string): void {
     this.playerInputs.push(input);
+    console.log(input)
+    if (this.mysteryWord.join().replace(",", "").includes(input)) {
+      this.numberOfLetterFound += 1;
+      console.log("Lettres trouvées", this.numberOfLetterFound)
+      console.log("Lettres a trouvées", this.numberOfLetterToFound)
+      if (this.numberOfLetterFound === this.numberOfLetterToFound) {
+        this.openMenu(GAMES_STATES.WIN)
+      }
+    }
   }
 
   generateAlphabet(): KeyBoardLetter[] {
@@ -331,10 +370,6 @@ export class GameComponent implements OnInit {
     return "TV Shows"
   }
 
-  getMysteryWord(mysteryWord: string): string[] {
-    return mysteryWord.toUpperCase().split('');
-  }
-
   setCategoryName(category: string): CATEGORIES {
     switch (category) {
       case "movies" :
@@ -355,4 +390,5 @@ export class GameComponent implements OnInit {
   }
 
   protected readonly GAME_MENU_STATE = GAME_MENU_STATE;
+  protected readonly GAMES_STATES = GAMES_STATES;
 }
