@@ -34,31 +34,34 @@
       </div>
     </header>
     <div class="mystery-word">
-      @for (word of mysteryWord; track word; let lastWord = $last) {
-        <div class="letter_group">
+      @for (word of mysteryWord; track word; let lastWord = $last, count = $count) {
+        <p class="mystery-word__letter-group">
           @for (letter of word; track letter; let lastLetter = $last) {
-
-            <div class="mystery-word__letter"
+            <div class="letter-group__letter-container"
                  [ngClass]="{
+                 'resize': lettersCount >= 9,
             'found': playerInputs.includes(letter.toUpperCase()),
             'not-found': letter !== ' ' && !playerInputs.includes(letter.toUpperCase()) }"
             >
               @if (playerInputs.includes(letter.toUpperCase())) {
-                <span>{{ letter | uppercase }}</span>
+                <span class="letter-group__letter"
+                      [ngClass]="{'resize': lettersCount >= 9}">{{ letter | uppercase }}</span>
               }
 
             </div>
             @if (lastLetter && !lastWord) {
-              <span class="mystery-word__letter space"></span>
+              <div class=" letter-group__letter-container space" [ngClass]="{'resize': lettersCount >= 9}">
+              </div>
             }
           }
-        </div>
+        </p>
       }
     </div>
-    <ul class="keyboard">
+    <ul class="keyboard" [ngClass]="{'resize': lettersCount >= 9}">
       @for (letter of keyboardLetters; track letter.value) {
         <li (click)="takePlayerInput(letter.value)" class="keyboard__letter"
             [ngClass]="{
+            'resize': lettersCount >= 9,
             'used': playerInputs.includes(letter.value),
             'not-used': !playerInputs.includes(letter.value) }">
           <button>{{ letter.value }}</button>
