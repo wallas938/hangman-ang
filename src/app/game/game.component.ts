@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {
   AsyncPipe,
@@ -35,6 +35,8 @@ import {CATEGORIES, GAME_MENU_STATE, GameData, GAMES_STATES, KeyBoardLetter, Mys
 })
 export class GameComponent implements OnInit {
   // @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
+  //Définir le signal pour gérer le ration suivant d'erreur :  2 erreurs autorisées pour 6 lettres
+  errorCounter:  WritableSignal<string> = signal<string>((v: string) => "")
   wordsCount: number = 0;
   lettersCount: number = 0;
   isGameMenuOpened: GAME_MENU_STATE = GAME_MENU_STATE.CLOSED;
