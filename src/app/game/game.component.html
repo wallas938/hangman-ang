@@ -1,11 +1,11 @@
 <div class="root">
   <app-game-menu *ngIf="isGameMenuOpened === GAME_MENU_STATE.OPENED"
                  [gameState]="gameCurrentState"
-                 (closeMenuEvent)="closeMenu($event)"></app-game-menu>
+                 (closeMenuEvent)="closeMenu()"></app-game-menu>
   <div class="container">
     <header>
       <div class="header__left">
-        <button (click)="openMenu()" class="menu btn-style">
+        <button (click)="openMenu(GAMES_STATES.PAUSED)" class="menu btn-style">
           <picture class="menu-btn">
             <source media="(max-width: 767px)" srcset="assets/images/icon-menu.svg" height="16.17" width="17.447">
             <source media="(max-width: 1439px)" srcset="assets/images/icon-menu.svg" height="25.872" width="27.915">
@@ -64,7 +64,7 @@
             'resize': lettersCount >= 9,
             'used': playerInputs.includes(letter.value),
             'not-used': !playerInputs.includes(letter.value) }">
-          <button>{{ letter.value }}</button>
+          <button [disabled]="playerInputs.includes(letter.value)">{{ letter.value }}</button>
         </li>
       }
     </ul>
