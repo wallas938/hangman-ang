@@ -1,4 +1,4 @@
-import {Component, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component, computed, OnInit, Signal, signal, WritableSignal} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {
   AsyncPipe,
@@ -36,9 +36,12 @@ import {CATEGORIES, GAME_MENU_STATE, GameData, GAMES_STATES, KeyBoardLetter, Mys
 export class GameComponent implements OnInit {
   // @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
   //Définir le signal pour gérer le ration suivant d'erreur :  2 erreurs autorisées pour 6 lettres
-  errorCounter:  WritableSignal<string> = signal<string>((v: string) => "")
-  wordsCount: number = 0;
-  lettersCount: number = 0;
+  wordsCount: WritableSignal<number> = signal<number>(0);
+  lettersCount: WritableSignal<number> = signal<number>(0);
+  // errorCounter:  Signal<string> = computed(() => {
+  //   if(this.wordsCount < )
+  //   return ""
+  // });
   isGameMenuOpened: GAME_MENU_STATE = GAME_MENU_STATE.CLOSED;
   data: GameData = {
     "categories": {
@@ -243,8 +246,8 @@ export class GameComponent implements OnInit {
   mysteryWords: MysteryWord [] = [];
   mysteryWord: string[] = [];
   gameCurrentState: GAMES_STATES = GAMES_STATES.PAUSED;
-  numberOfLetterToFound!: number;
-  numberOfLetterFound: number = 0;
+  numberOfLetterToFound: WritableSignal<number> = signal<number>(0);
+  numberOfLetterFound: WritableSignal<number> = signal<number>(0);
 
   constructor(private route: ActivatedRoute) {
   }
@@ -259,7 +262,7 @@ export class GameComponent implements OnInit {
 
   resetGame() {
     this.notSelectedWords = [];
-    this.numberOfLetterFound = 0;
+    this.numberOfLetterFound.set(0);
     this.playerInputs = [];
     this.mysteryWords
       .map(value => {
@@ -274,7 +277,7 @@ export class GameComponent implements OnInit {
         return w
       });
 
-    this.numberOfLetterToFound = new Set(this.mysteryWord.join('')).size;
+    this.numberOfLetterToFound.set(new Set(this.mysteryWord.join('')).size);
 
     this.initGame();
   }
@@ -310,13 +313,13 @@ export class GameComponent implements OnInit {
 
     mysteryWord = this.notSelectedWords.at(randomNumber);
 
-    this.wordsCount = mysteryWord!.name.split(" ").length;
+    this.wordsCount.set(mysteryWord!.name.split(" ").length);
 
-    this.lettersCount = mysteryWord!.name.length;
+    this.lettersCount.set(mysteryWord!.name.length);
 
     this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' ');
 
-    this.numberOfLetterToFound = new Set(this.mysteryWord.join('')).size;
+    this.numberOfLetterToFound.set(new Set(this.mysteryWord.join('')).size);
 
     this.keyboardLetters = this.generateAlphabet();
 
@@ -327,7 +330,7 @@ export class GameComponent implements OnInit {
     this.playerInputs.push(input);
     console.log(input)
     if (this.mysteryWord.join().replace(",", "").includes(input)) {
-      this.numberOfLetterFound += 1;
+      this.numberOfLetterFound.set(this.numberOfLetterFound() + 1);
       console.log("Lettres trouvées", this.numberOfLetterFound)
       console.log("Lettres a trouvées", this.numberOfLetterToFound)
       if (this.numberOfLetterFound === this.numberOfLetterToFound) {

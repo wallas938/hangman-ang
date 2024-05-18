@@ -39,29 +39,29 @@
           @for (letter of word; track letter; let lastLetter = $last) {
             <div class="letter-group__letter-container"
                  [ngClass]="{
-                 'resize': lettersCount >= 9,
+                 'resize': lettersCount() >= 9,
             'found': playerInputs.includes(letter.toUpperCase()),
             'not-found': letter !== ' ' && !playerInputs.includes(letter.toUpperCase()) }"
             >
               @if (playerInputs.includes(letter.toUpperCase())) {
                 <span class="letter-group__letter"
-                      [ngClass]="{'resize': lettersCount >= 9}">{{ letter | uppercase }}</span>
+                      [ngClass]="{'resize': lettersCount() >= 9}">{{ letter | uppercase }}</span>
               }
 
             </div>
             @if (lastLetter && !lastWord) {
-              <div class=" letter-group__letter-container space" [ngClass]="{'resize': lettersCount >= 9}">
+              <div class=" letter-group__letter-container space" [ngClass]="{'resize': lettersCount() >= 9}">
               </div>
             }
           }
         </p>
       }
     </div>
-    <ul class="keyboard" [ngClass]="{'resize': lettersCount >= 9}">
+    <ul class="keyboard" [ngClass]="{'resize': lettersCount() >= 9}">
       @for (letter of keyboardLetters; track letter.value) {
         <li (click)="takePlayerInput(letter.value)" class="keyboard__letter"
             [ngClass]="{
-            'resize': lettersCount >= 9,
+            'resize': lettersCount() >= 9,
             'used': playerInputs.includes(letter.value),
             'not-used': !playerInputs.includes(letter.value) }">
           <button [disabled]="playerInputs.includes(letter.value)">{{ letter.value }}</button>
