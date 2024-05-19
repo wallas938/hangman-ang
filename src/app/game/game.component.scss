@@ -54,7 +54,6 @@
         align-items: center;
 
         .live-bar {
-          position: relative;
           margin-right: toRem(16, 16);
           background-color: $White;
           width: toRem(57, 16);
@@ -73,18 +72,13 @@
           }
 
           &__value {
-            position: absolute;
+            //position: absolute;
             background-color: $DarkNavy;
-            width: toRem(49, 16);
-            height: toRem(8, 16);
+            width: 100%;
+            height: 100%;
             border-radius: toRem(96, 16);
             @include breakpoint-up(medium) {
-              width: toRem(138, 16);
-              height: toRem(13, 16);
               border-radius: toRem(96, 16);
-            }
-            @include breakpoint-up(large) {
-              width: toRem(217, 16);
             }
           }
         }
@@ -295,6 +289,8 @@
         }
 
         button {
+          width: 100%;
+          height: 100%;
           border: none;
           background-color: transparent;
           color: $DarkNavy;
