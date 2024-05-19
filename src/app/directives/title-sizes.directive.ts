@@ -16,7 +16,6 @@ export class TitleSizesDirective implements OnInit {
   ngOnInit(): void {
     this.renderer.setStyle(this.el.nativeElement, "width", this.dimensions.width);
     this.renderer.setStyle(this.el.nativeElement, "height", this.dimensions.height);
-    console.log(this.dimensions)
   }
 
 }

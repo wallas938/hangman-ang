@@ -1,5 +1,5 @@
 <div class="root">
-  <app-game-menu *ngIf="isGameMenuOpened === GAME_MENU_STATE.OPENED"
+  <app-game-menu *ngIf="gameMenuState === GAME_MENU_STATE.OPENED"
                  [gameState]="gameCurrentState"
                  (closeMenuEvent)="closeMenu()"></app-game-menu>
   <div class="container">
@@ -23,7 +23,7 @@
       </div>
       <div class="header__right">
         <div class="live-bar">
-          <div class="live-bar__value" [ngStyle]="{width: '80%' }"></div>
+          <div class="live-bar__value" [ngStyle]="{width: computeLiveBarSize() }"></div>
         </div>
         <picture class="heart">
           <source media="(max-width: 767px)" srcset="assets/images/icon-heart.svg" height="24" width="26.158">
