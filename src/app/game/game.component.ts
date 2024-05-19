@@ -1,4 +1,4 @@
-import {Component, computed, OnInit, Signal, signal, WritableSignal} from '@angular/core';
+import {Component, OnInit, signal, WritableSignal} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
 import {
   AsyncPipe,
@@ -364,6 +364,7 @@ export class GameComponent implements OnInit {
     this.numberOfLetterFound.set(0);
     this.errorCount.set(0);
     this.playerInputs = [];
+    this.gameCurrentState = GAMES_STATES.PAUSED;
   }
 
   private markSelectedWord(): void {

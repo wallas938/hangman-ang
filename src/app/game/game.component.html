@@ -40,10 +40,10 @@
             <div class="letter-group__letter-container"
                  [ngClass]="{
                  'resize': lettersCount() >= 9,
-            'found': playerInputs.includes(letter.toUpperCase()),
-            'not-found': letter !== ' ' && !playerInputs.includes(letter.toUpperCase()) }"
+            'found': playerInputs.includes(letter.toUpperCase()) || gameCurrentState === GAMES_STATES.LOSE,
+            'not-found': letter !== ' ' && !playerInputs.includes(letter.toUpperCase()) && gameCurrentState !== GAMES_STATES.LOSE}"
             >
-              @if (playerInputs.includes(letter.toUpperCase())) {
+              @if (playerInputs.includes(letter.toUpperCase()) || gameCurrentState === GAMES_STATES.LOSE) {
                 <span class="letter-group__letter"
                       [ngClass]="{'resize': lettersCount() >= 9}">{{ letter | uppercase }}</span>
               }
