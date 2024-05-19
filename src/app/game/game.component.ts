@@ -34,15 +34,9 @@ import {CATEGORIES, GAME_MENU_STATE, GameData, GAMES_STATES, KeyBoardLetter, Mys
   styleUrl: './game.component.scss'
 })
 export class GameComponent implements OnInit {
-  // @ViewChild('gameMenuRef', {read: ViewContainerRef}) gameMenuRef!: ViewContainerRef;
-  //Définir le signal pour gérer le ration suivant d'erreur :  2 erreurs autorisées pour 6 lettres
   wordsCount: WritableSignal<number> = signal<number>(0);
   lettersCount: WritableSignal<number> = signal<number>(0);
   attemptsLeft: WritableSignal<number> = signal<number>(0);
-  // errorCounter:  Signal<string> = computed(() => {
-  //   if(this.wordsCount < )
-  //   return ""
-  // });
   gameMenuState: GAME_MENU_STATE = GAME_MENU_STATE.CLOSED;
   data: GameData = {
     "categories": {
@@ -262,27 +256,136 @@ export class GameComponent implements OnInit {
     this.initGame();
   }
 
-  resetGame() {
+  private initGame() {
+
+    let mysteryWord = this.generateMysteryWord();
+
+    this.wordsCount.set(mysteryWord!.name.split(" ").length);
+
+    this.lettersCount.set(mysteryWord!.name.length);
+
+    this.numberOfLetterToFound.set(new Set(this.mysteryWord.join('')).size);
+
+    this.attemptsLeft.set(this.generateNumberOfAttempts());
+
+    this.keyboardLetters = this.generateAlphabet();
+
+  }
+
+  takePlayerInput(input: string): void {
+
+    this.playerInputs.push(input);
+
+    if (this.isInputInMysteryWord(input)) {
+
+      this.incrementLetterFound();
+
+      if (this.isWordComplete()) {
+
+        this.openMenu(GAMES_STATES.WIN);
+
+      }
+    } else {
+      this.handleIncorrectInput();
+    }
+  }
+
+  private isInputInMysteryWord(input: string): boolean {
+    return this.mysteryWord.join().replace(",", "").includes(input);
+  }
+
+  private incrementLetterFound(): void {
+    this.numberOfLetterFound.set(this.numberOfLetterFound() + 1);
+  }
+
+  private isWordComplete(): boolean {
+    return this.numberOfLetterFound() === this.numberOfLetterToFound();
+  }
+
+  private handleIncorrectInput(): void {
+    if (this.isLastAttempt()) {
+      this.openMenu(GAMES_STATES.LOSE);
+    } else {
+      this.incrementErrorCount();
+    }
+  }
+
+  private isLastAttempt(): boolean {
+    return (this.attemptsLeft() - this.errorCount()) === 1;
+  }
+
+  private incrementErrorCount(): void {
+    this.errorCount.update(prevErrorCount => prevErrorCount + 1);
+  }
+
+  private generateMysteryWord(): MysteryWord | undefined {
+
+    let mysteryWord: MysteryWord | undefined;
+
+    let randomNumber: number;
+
+    let category: CATEGORIES = this.setCategoryName(this.title);
+
+    this.mysteryWords = this.data.categories[category];
+
+    this.populateNotSelectedWords();
+
+    if (!this.notSelectedWords.length) {
+      this.unMarkSelectedWord(category);
+    }
+
+    randomNumber = Math.floor(Math.random() * this.notSelectedWords.length);
+
+    mysteryWord = this.notSelectedWords.at(randomNumber);
+
+    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' ');
+
+    return mysteryWord;
+  }
+
+  unMarkSelectedWord(category: CATEGORIES) {
+    this.notSelectedWords = [];
+    this.data.categories[category].forEach(word => {
+      word.selected = false;
+      this.notSelectedWords.push(word)
+    });
+
+  }
+
+  resetGame(): void {
+    this.clearGameData();
+    this.markSelectedWord();
+    this.updateNumberOfLettersToFind();
+    this.initGame();
+  }
+
+  private clearGameData(): void {
     this.notSelectedWords = [];
     this.numberOfLetterFound.set(0);
     this.errorCount.set(0);
     this.playerInputs = [];
-    this.mysteryWords
-      .map(value => {
-        if (this.mysteryWord.join(' ') === value.name) {
-          value.selected = true;
-        }
-        return value;
-      })
-      .filter(w => !w.selected)
-      .map(w => {
-        this.notSelectedWords.push(w);
-        return w
-      });
+  }
 
-    this.numberOfLetterToFound.set(new Set(this.mysteryWord.join('')).size);
+  private markSelectedWord(): void {
+    let category: CATEGORIES = this.setCategoryName(this.title);
+    this.data.categories[category].forEach(word => {
+      if (this.isCurrentMysteryWord(word.name.toLowerCase())) {
+        word.selected = true;
+      }
+    });
+  }
 
-    this.initGame();
+  private isCurrentMysteryWord(wordName: string): boolean {
+    return this.mysteryWord.join(' ').toLowerCase() === wordName;
+  }
+
+  private populateNotSelectedWords(): void {
+    this.notSelectedWords = this.mysteryWords.filter(word => !word.selected);
+  }
+
+  private updateNumberOfLettersToFind(): void {
+    const uniqueLetters = new Set(this.mysteryWord.join(''));
+    this.numberOfLetterToFound.set(uniqueLetters.size);
   }
 
   openMenu(state: GAMES_STATES) {
@@ -297,39 +400,6 @@ export class GameComponent implements OnInit {
     }
   }
 
-  initGame() {
-
-    let mysteryWord: MysteryWord | undefined;
-
-    let category: CATEGORIES = this.setCategoryName(this.title);
-
-    this.mysteryWords = this.data.categories[category];
-
-    this.mysteryWords
-      .filter(w => !w.selected)
-      .map(w => {
-        this.notSelectedWords.push(w);
-        return w
-      })
-
-    let randomNumber = Math.floor(Math.random() * this.notSelectedWords.length);
-
-    mysteryWord = this.notSelectedWords.at(randomNumber);
-
-    this.wordsCount.set(mysteryWord!.name.split(" ").length);
-
-    this.lettersCount.set(mysteryWord!.name.length);
-
-    this.mysteryWord = mysteryWord!.name.toUpperCase().toUpperCase().split(' ');
-
-    this.numberOfLetterToFound.set(new Set(this.mysteryWord.join('')).size);
-
-    this.attemptsLeft.set(this.generateNumberOfAttempts());
-
-    this.keyboardLetters = this.generateAlphabet();
-
-  }
-
   generateNumberOfAttempts(): number {
     if (this.numberOfLetterToFound() <= 6) return 3;
     if (this.numberOfLetterToFound() > 6 && this.numberOfLetterToFound() < 12) return 4;
@@ -341,23 +411,6 @@ export class GameComponent implements OnInit {
     if (!this.errorCount()) return '100%';
     const valueToTakeBack = (100 / this.attemptsLeft()) * this.errorCount();
     return `${100 - valueToTakeBack}%`;
-  }
-
-  takePlayerInput(input: string): void {
-    this.playerInputs.push(input);
-    if (this.mysteryWord.join().replace(",", "").includes(input)) {
-      this.numberOfLetterFound.set(this.numberOfLetterFound() + 1);
-      if (this.numberOfLetterFound() === this.numberOfLetterToFound()) {
-        this.openMenu(GAMES_STATES.WIN);
-        return;
-      }
-      return;
-    }
-    if ((this.attemptsLeft() - this.errorCount()) === 1) {
-      this.openMenu(GAMES_STATES.LOSE);
-      return;
-    }
-    this.errorCount.update(prevErrorCount => prevErrorCount + 1);
   }
 
   generateAlphabet(): KeyBoardLetter[] {
